@@ -44,7 +44,7 @@ body {
 
 /* ---INDEX.HTML--- */
 /* MAIN */
-main {
+.main {
   display: flex;
 }
 
@@ -76,8 +76,8 @@ main {
 .section2 .signup-index {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 40%;
+  justify-content: space-around;
+  height: 50%;
 }
 .section2 .signup-index > .title1 {
   font-size: 64px;
