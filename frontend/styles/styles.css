@@ -114,3 +114,46 @@ body {
   word-spacing: 1px;
   margin-right:6px;
 }
+
+
+
+
+
+
+
+  /* ------ Styling for homepage.html ------*/
+
+  /* START left navigation menu  */
+
+  .padding-left-right{
+    padding-left:5%;
+    padding-right:5%;
+  }
+
+  .left-side-menu{
+    font-family: 'Noto Sans', sans-serif;
+    position:fixed;
+    width:227px;
+    height:100%;
+    padding-left:12px;
+    padding-left:12px;
+    z-index:1;
+  }
+
+  .left-side-menu li{
+    display:list-item;
+    margin-top: 5vh;
+    font-size: 1.25rem;
+  }
+
+  .fa-twitter,.fa-house, .fa-user, .fa-right-from-bracket{
+    margin-right: 12px;
+    color:#E7E9EA;
+  }
+
+  .left-side-menu span{
+    color:#E7E9EA;
+    font-weight: 600;
+  }
+
+    /* END  left navigation menu  */
