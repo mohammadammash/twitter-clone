@@ -7,11 +7,18 @@ const signup_show_btn = document.getElementById("signup-show");
 const signup_show_link = document.getElementById('signup-link');
 
 const showSignupModal = ()=>{
-    console.log('HEYYY')
     // make sure login-modal is hidden(add display-none) - hence we can go directly from login-modal to sign-up modal 
     login_modal.classList.add('display-none'); //note: it have no effect if class already exists
     signup_modal.classList.remove('display-none');
 }
 
+const showLoginModal = ()=>{
+    // there is no way to access login from signup page => no need to hide signup-modal hence it is already hidden
+    login_modal.classList.remove('display-none')
+}
+
+// SignUp Event Listeners
 signup_show_btn.addEventListener('click',showSignupModal);
 signup_show_link.addEventListener("click", showSignupModal);
+// Login Event Listeners
+login_show_btn.addEventListener("click", showLoginModal);
