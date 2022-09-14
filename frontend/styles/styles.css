@@ -6,10 +6,11 @@
 }
 li {
   list-style-type: none;
+  display: inline-block;
 }
 a {
   text-decoration: none;
-  color: #1d9bf0;
+  color: inherit;
 }
 
 /* UTILITIES */
@@ -36,9 +37,9 @@ a {
 body {
   background-color: black;
 }
-.blue-text{
-    color: #1d9bf0;
-    font-weight: 550;
+.blue-text {
+  color: #1d9bf0;
+  font-weight: 550;
 }
 
 /* ---INDEX.HTML--- */
@@ -46,6 +47,7 @@ body {
 main {
   display: flex;
 }
+
 /* main-leftSection: */
 .section1 {
   display: flex;
@@ -56,6 +58,7 @@ main {
   background: url("../assets/bg-index.png");
   background-position: cover;
 }
+
 /* main-rightSection: */
 .section2 {
   color: #e7e9ea;
@@ -74,27 +77,40 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 2px solid green;
-  height:40%;
+  height: 40%;
 }
-.section2 .signup-index > .title1{
-    font-size: 64px;
+.section2 .signup-index > .title1 {
+  font-size: 64px;
 }
-.section2 .signup-index > .title2{
-    font-size: 31px;
+.section2 .signup-index > .title2 {
+  font-size: 31px;
 }
-.section2 .end > .terms{
-    margin-top: 5px;
-    font-size: 11px;
-    width:300px;
-    line-height: 1.5em;
+.section2 .end > .terms {
+  margin-top: 5px;
+  font-size: 11px;
+  width: 300px;
+  line-height: 1.5em;
 }
-.section2 .login-index{
-  border: 2px solid green;
-  height:20%;
+.section2 .login-index {
+  height: 20%;
   font-size: 17px;
 }
-.section2 .login-index > .text{
-    margin-bottom: 15px;
+.section2 .login-index > .text {
+  margin-bottom: 15px;
 }
+/* END OF MAIN */
 
+/* START FOOTER CSS */
+/* footer- footer-links footer-item copyrights */
+.footer {
+  height: 60px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 15px;
+  color: #71767b;
+  line-height: 22px;
+}
+.footer .footer-links .footer-item > li{
+  word-spacing: 1px;
+  margin-right:6px;
+}
