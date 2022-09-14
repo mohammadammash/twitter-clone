@@ -33,13 +33,17 @@ a {
 .bold {
   font-weight: bold;
 }
-body{
-    background-color: black;
+body {
+  background-color: black;
+}
+.blue-text{
+    color: #1d9bf0;
+    font-weight: 550;
 }
 
 /* ---INDEX.HTML--- */
 /* MAIN */
-main{
+main {
   display: flex;
 }
 /* main-leftSection: */
@@ -48,7 +52,49 @@ main{
   justify-content: center;
   align-items: center;
   height: 735px;
-  width: 800px;
+  width: 55vw;
   background: url("../assets/bg-index.png");
   background-position: cover;
 }
+/* main-rightSection: */
+.section2 {
+  color: #e7e9ea;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 735px;
+  width: 45vw;
+  padding-left: 37px;
+}
+.section2 .signup-index > .logo {
+  width: 45px;
+  height: 40px;
+}
+.section2 .signup-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid green;
+  height:40%;
+}
+.section2 .signup-index > .title1{
+    font-size: 64px;
+}
+.section2 .signup-index > .title2{
+    font-size: 31px;
+}
+.section2 .end > .terms{
+    margin-top: 5px;
+    font-size: 11px;
+    width:300px;
+    line-height: 1.5em;
+}
+.section2 .login-index{
+  border: 2px solid green;
+  height:20%;
+  font-size: 17px;
+}
+.section2 .login-index > .text{
+    margin-bottom: 15px;
+}
+
