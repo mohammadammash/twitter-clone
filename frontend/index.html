@@ -24,7 +24,7 @@
           <p class="title1 bold">Happening now</p>
           <p class="title2 bold">Join Twitter today</p>
           <div class="end">
-            <button class="btn btn-lg">Sign up</button>
+            <button id='login-show' class="btn btn-lg">Sign up</button>
             <p class="terms">
               By signing up, you agree to the
               <a href="#" class="blue-text">Terms of Service</a> and
@@ -36,7 +36,7 @@
         <!-- Login Section -->
         <div class="login-index">
           <p class="text bold">Already have an account?</p>
-          <button class="btn btn-trans">Sign in</button>
+          <button id='login-show' class="btn btn-trans">Sign in</button>
         </div>
       </div>
       <!-- END OF RIGHT SECTION -->
@@ -72,7 +72,7 @@
 
     <!-- START OF MODALS -->
     <!-- Start of Modal/Popup for SignUp -->
-    <div class="modal">
+    <div class="modal"  style="display: none;"> 
       <div class="modal-content">
         <span id="close-btn" class="close-btn">&times;</span>
         <p class="title bold">Create your account</p>
@@ -135,12 +135,14 @@
               <span class="title bold">Sign in to Twitter</span>
               <input class="authentication-input" type="text" placeholder="Phone, email, or username">
               <input class="authentication-input" type="password" placeholder="Password">
-            <button id="signup-submit" class="btn btn-lg">Log in</button>
+            <button id="login-submit" class="btn btn-lg">Log in</button>
             </form>
               <p class="login-footer">Don't have an account?&nbsp;<a id="signup-link" class="blue-text"> Sign up</span></p>
       </div>
       </div>
       <!-- End of Modal/popup for Login -->
     <!-- END OF MODALS -->
+
+    <script src="js/index.js"></script>
   </body>
 </html>
