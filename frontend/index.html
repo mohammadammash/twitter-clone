@@ -24,7 +24,7 @@
           <p class="title1 bold">Happening now</p>
           <p class="title2 bold">Join Twitter today</p>
           <div class="end">
-            <button id='login-show' class="btn btn-lg">Sign up</button>
+            <button id='signup-show' class="btn btn-lg">Sign up</button>
             <p class="terms">
               By signing up, you agree to the
               <a href="#" class="blue-text">Terms of Service</a> and
@@ -72,7 +72,7 @@
 
     <!-- START OF MODALS -->
     <!-- Start of Modal/Popup for SignUp -->
-    <div class="modal"  style="display: none;"> 
+    <div id="signup-modal" class="modal" style="display: none;"> 
       <div class="modal-content">
         <span id="close-btn" class="close-btn">&times;</span>
         <p class="title bold">Create your account</p>
@@ -127,7 +127,7 @@
     <!-- End of Modal/Popup for SignUp -->
 
     <!-- Start of Modal/Popup for Login -->
-       <div class="modal" style="display: none;">
+       <div id="login-modal" class="modal"style="display: none;">
         <div class="modal-content">
           <span class="close-btn">&times;</span>
             <form class="login-form">
