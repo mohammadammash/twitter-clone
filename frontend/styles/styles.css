@@ -1,0 +1,116 @@
+/* CSS RESET */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style-type: none;
+  display: inline-block;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* UTILITIES */
+.btn {
+  width: 300px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+}
+.btn-lg {
+  color: white;
+  background-color: #1d9bf0;
+  font-size: 17px;
+}
+.btn-trans {
+  background-color: black;
+  border: 1px solid #d9d9d9;
+  color: #1d9bf0;
+  font-size: 17px;
+}
+.bold {
+  font-weight: bold;
+}
+body {
+  background-color: black;
+}
+.blue-text {
+  color: #1d9bf0;
+  font-weight: 550;
+}
+
+/* ---INDEX.HTML--- */
+/* MAIN */
+.main {
+  display: flex;
+}
+
+/* main-leftSection: */
+.section1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 735px;
+  width: 55vw;
+  background: url("../assets/bg-index.png");
+  background-position: cover;
+}
+
+/* main-rightSection: */
+.section2 {
+  color: #e7e9ea;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 735px;
+  width: 45vw;
+  padding-left: 37px;
+}
+.section2 .signup-index > .logo {
+  width: 45px;
+  height: 40px;
+}
+.section2 .signup-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
+}
+.section2 .signup-index > .title1 {
+  font-size: 64px;
+}
+.section2 .signup-index > .title2 {
+  font-size: 31px;
+}
+.section2 .end > .terms {
+  margin-top: 5px;
+  font-size: 11px;
+  width: 300px;
+  line-height: 1.5em;
+}
+.section2 .login-index {
+  height: 20%;
+  font-size: 17px;
+}
+.section2 .login-index > .text {
+  margin-bottom: 15px;
+}
+/* END OF MAIN */
+
+/* START FOOTER CSS */
+/* footer- footer-links footer-item copyrights */
+.footer {
+  height: 60px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 15px;
+  color: #71767b;
+  line-height: 22px;
+}
+.footer .footer-links .footer-item > li{
+  word-spacing: 1px;
+  margin-right:6px;
+}
