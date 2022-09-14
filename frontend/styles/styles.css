@@ -211,17 +211,37 @@ body {
 .modal-content .signup-btn{
   text-align: center;
 }
+/* End of Signup Modal */
 
+/* LogIn Modal */
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height:75%;
+}
+.login-form > img{
+  width:120px;
+  height: 120px;
+}
+.modal .login-footer{
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #71767b;
+  opacity: 1; /* Firefox */
+}
+/* End of Login Modal */
 /* ---END OF SIGN-UP & LOGIN MODALS--- */
 
 
 
 
-
-
-
-
-/* ------ Styling for homepage.html ------*/
+/* ------ HOMEPAGE.HTML STYLES ------*/
 /* START left navigation menu  */
 
   .padding-left-right{
