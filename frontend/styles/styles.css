@@ -121,6 +121,8 @@ body {
 
 
 
+
+
   /* ------ Styling for homepage.html ------*/
 
   /* START left navigation menu  */
@@ -138,6 +140,10 @@ body {
     padding-left:12px;
     padding-left:12px;
     z-index:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 0.1px solid #E7E9EA;
   }
 
   .left-side-menu li{
@@ -155,10 +161,39 @@ body {
     color:#E7E9EA;
     font-weight: 600;
   }
-  
+
   .home-tweet-btn{
     width:90%;
     font-weight: 600;
   }
 
-    /* END  left navigation menu  */
+  /* user info section inside the left navigation menu*/
+  .user-info{
+    display:flex;
+    align-items: center;
+    height:64px;
+  }
+  .profile-pic{
+    border: 2px solid #E7E9EA;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    background-image: url("/frontend/assets/dummy-profile-pic.png");
+    background-size: cover;
+  }
+
+  .name{
+    color:#E7E9EA;
+    font-size: 20px;
+    font-weight:600;
+  }
+  .username{
+    color:#71767b;
+    font-size: 15px;
+  }
+
+  .name-username-container{
+    margin-left:10px
+  }
+
+  /* END  left navigation menu  */
