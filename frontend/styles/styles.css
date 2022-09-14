@@ -155,5 +155,10 @@ body {
     color:#E7E9EA;
     font-weight: 600;
   }
+  
+  .home-tweet-btn{
+    width:90%;
+    font-weight: 600;
+  }
 
     /* END  left navigation menu  */
