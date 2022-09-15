@@ -380,11 +380,6 @@ header {
   height: 100%;
 }
 
-.btn-imgicon img{
-  width:15px;
-  height:15px;
-}
-
 .create-tweet {
   display: flex;
   width: 100%;
@@ -398,8 +393,54 @@ header {
   cursor: pointer;
 }
 
+.whatshappening {
+  border: 2px solid green;
+  width: 100%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.btn-imgicon {
+  border: 1px solid red;
+  width: 100%;
+  /* height: 50%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height:fit-content;
+}
 
+.whatshappening input {
+  font-size: 18px;
+  width: 100%;
+  height: 50%;
+  color: #e7e9ea;
+  background-color: black;
+  outline: none;
+  border: none;
+}
+
+.btn-imgicon button {
+  border: 1px solid blue;
+  width: 75px;
+  height: 35px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.btn-imgicon img{
+  width:100% ;
+  height:100% ;
+}
+
+.img-icon-container{
+  width:20px;
+  height:20px;
+
+}
 
 
 /* START feed section */
