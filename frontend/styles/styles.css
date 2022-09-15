@@ -12,7 +12,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
-a, button{
+a,
+button {
   cursor: pointer;
 }
 
@@ -44,7 +45,7 @@ body {
   color: #1d9bf0;
   font-weight: 550;
 }
-.display-none{
+.display-none {
   display: none;
 }
 
@@ -116,9 +117,9 @@ body {
   color: #71767b;
   line-height: 22px;
 }
-.footer .footer-links .footer-item > li{
+.footer .footer-links .footer-item > li {
   word-spacing: 1px;
-  margin-right:6px;
+  margin-right: 6px;
 }
 
 /* START OF SIGN-UP & LOGIN MODALS */
@@ -146,14 +147,14 @@ body {
   color: #e7e9ea;
   border-radius: 10px;
 }
-.modal-content .first{
+.modal-content .first {
   display: flex;
 }
 .modal-content .title {
   font-size: 31px;
   text-align: center;
   margin-bottom: 20px;
-  margin-top:0;
+  margin-top: 0;
 }
 /* The Close Button */
 .close-btn {
@@ -161,9 +162,9 @@ body {
   font-size: 30px;
   font-weight: bold;
   text-align: end;
-  width:80%;
+  width: 80%;
 }
-.close-btn:hover{
+.close-btn:hover {
   cursor: pointer;
 }
 .authentication-input {
@@ -175,8 +176,8 @@ body {
   border-radius: 5px;
   background-color: black;
 }
-.modal-content .form{
-  height:93%;
+.modal-content .form {
+  height: 93%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -191,55 +192,53 @@ body {
   margin-bottom: 10px;
   color: #e7e9ea;
 }
-.signup-footer{
+.signup-footer {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height:25%;
+  height: 25%;
   margin-bottom: 10px;
-  width:90%;
+  width: 90%;
 }
-.signup-footer .dob-section > select{
+.signup-footer .dob-section > select {
   display: block;
   margin-bottom: 12px;
 }
-.signup-footer .signup-img{
+.signup-footer .signup-img {
   border-radius: 50%;
   height: 100%;
 }
-.modal-content .signup-btn{
+.modal-content .signup-btn {
   text-align: center;
 }
 /* End of Signup Modal */
 
 /* LogIn Modal */
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height:75%;
+  height: 75%;
 }
-.login-form > img{
-  width:120px;
+.login-form > img {
+  width: 120px;
   height: 120px;
 }
-.modal .login-footer{
+.modal .login-footer {
   height: 15%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #71767b;
   opacity: 1; /* Firefox */
 }
 /* End of Login Modal */
 /* ---END OF SIGN-UP & LOGIN MODALS--- */
-
-
-
 
 /* ------ HOMEPAGE.HTML STYLES ------*/
 /* START left navigation menu  */
@@ -247,8 +246,8 @@ body {
 .fa-house,
 .fa-user,
 .fa-right-from-bracket {
-    margin-right: 15px;
-    color: #e7e9ea;
+  margin-right: 15px;
+  color: #e7e9ea;
 }
 
 .home-page-body {
@@ -290,8 +289,8 @@ header {
 
 .nav-left a:hover,
 .account-info a:hover {
-    background-color: #2F3336;
-    border-radius: 9999px;
+  background-color: #2f3336;
+  border-radius: 9999px;
 }
 
 /* Tweet button */
@@ -309,12 +308,52 @@ header {
   opacity: 0.8;
 }
 
+/* User Profile info at the bottom of the left nav menu*/
+.account-info {
+  border: 2px solid purple;
+  width: 100%;
+  height: 30%;
+  padding-top: 185px;
+}
+
+.account-info a {
+  border: 2px solid yellow;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px 5px 15px;
+}
+
+.pp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.name-username {
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 90%;
+  color: white;
+  margin-left: 12px;
+  line-height: 20px;
+}
+
+.name {
+  font-size: 20px;
+  color: #e7e9ea;
+  font-weight: 600;
+}
+
+.name-username {
+  font-size: 15px;
+  color: #71767b;
+}
+
 /* END  left navigation menu  */
 
-
 /* START feed section */
 /* START feed section */
-
 
 /* START search section */
 /* END search section */
