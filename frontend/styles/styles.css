@@ -348,7 +348,6 @@ header {
 
 /* START feed section */
 .home-heading {
-  border: 2px solid blue;
   align-items: center;
   width: 100%;
   height: 55px;
@@ -363,13 +362,11 @@ header {
 }
 
 .feed-contents {
-  border: 2px solid red;
   display: flex;
   width: 100%;
 }
 
 .feed-content {
-  border: 2px solid green;
   width: 50%;
   border-left: 1px solid #71767b;
   border-right: 1px solid #71767b;
@@ -395,7 +392,6 @@ header {
 }
 
 .whatshappening {
-  border: 2px solid green;
   width: 100%;
   margin-left: 15px;
   display: flex;
@@ -404,7 +400,6 @@ header {
 }
 
 .btn-imgicon {
-  border: 1px solid red;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -423,7 +418,6 @@ header {
 }
 
 .btn-imgicon button {
-  border: 1px solid blue;
   width: 75px;
   height: 35px;
   margin: 0;
@@ -474,7 +468,6 @@ header {
 }
 
 .tweet-obj-contents {
-  border: 1px solid yellow;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -482,12 +475,8 @@ header {
   height: fit-content;
 }
 
-.tweet-obj-writer {
-  border: 1px solid blue;
-}
 
 .tweet-object {
-  border: 2px solid green;
   display: flex;
   width: 100%;
   padding: 12px 18px 0 16px;
@@ -497,14 +486,12 @@ header {
 }
 
 .tweet-obj-heart-likes {
-  border: 1px solid purple;
   margin-top: 15px;
   color: #71767b;
   display: flex;
 }
 
 .tweet-obj-img {
-  border: 1px solid yellow;
   width: 100%;
 }
 
@@ -514,9 +501,39 @@ header {
   margin-top: 15px;
   border-radius: 10px;
 }
-
-
 /* END feed section */
 
 /* START search section */
+.search-section {
+  border: 2px solid red;
+  width: 50%;
+  padding: 0 1.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-bar {
+  background-color: black;
+  display: flex;
+  height: 55px;
+  max-width: 354px;
+  position: sticky;
+  top: 0;
+  padding-top: 5px;
+
+}
+
+.search-bar input {
+  background-color: #202226;
+  width: 100%;
+  color: #e7e9ea;
+  line-height: 20px;
+  height: 45px;
+  border: none;
+  padding-left: 30px;
+  font-size: 15px;
+  font-weight: 450;
+  border-radius: 9999px;
+}
 /* END search section */
