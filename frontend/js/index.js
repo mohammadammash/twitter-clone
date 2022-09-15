@@ -19,20 +19,34 @@ const signup_phone_nb = document.getElementById("signup-phone");
 const signup_username = document.getElementById("signup-username");
 const signup_password = document.getElementById("signup-password");
 const signup_email = document.getElementById("signup-email");
+const signup_img_url = document.getElementById("signup-imgurl");
+const signup_img_show = document.getElementById("signup-img");
 const birthday = document.getElementById("signup-birthday");
 const birthmonth = document.getElementById("signup-birthmonth");
 const birthyear = document.getElementById("signup-birthyear");
+var base64StringImg;
+
+// show image and save url
+function uploadImage(){
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        signup_img_show.src = e.target.result;
+      };
+      reader.readAsDataURL(this.files[0]);
+    }
+}
 
 // find today's date as dd/mm/yyyy:
-const getTodayDate = ()=>{
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; 
-var yyyy = today.getFullYear();
-if(dd<10) dd='0'+dd;
-if(mm<10) mm='0'+mm;
-return dd+'/'+mm+'/'+yyyy;
-}
+const getTodayDate = () => {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
+  return dd + "/" + mm + "/" + yyyy;
+};
 
 // SIGN UP FUNCTIONS
 const showSignupModal = () => {
@@ -52,7 +66,8 @@ const createNewUser = (e) => {
   const birthmonth = monthSelect.options[monthSelect.selectedIndex].value;
   const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
   const joined_in_date = getTodayDate(); //as:  dd/mm/yy
-  const avatar_url = 'Hfsgsdfdsffdsdfsfsdf';
+  const avatar_url = 
+  console.log(avatar_url);
 
   const add_user = async () => {
     try {
@@ -191,6 +206,7 @@ login_submit_btn.addEventListener("click", loginUser);
 close_login.addEventListener("click", () =>
   login_modal.classList.add("display-none")
 );
+signup_img_url.addEventListener('change',uploadImage);
 // check data of dropdowns on change
 yearSelect.onchange = function () {
   populateDays(monthSelect.value);
