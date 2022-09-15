@@ -12,8 +12,14 @@ a {
   text-decoration: none;
   color: inherit;
 }
-a, button{
+a,
+button {
   cursor: pointer;
+}
+input {
+  color: #e7e9ea;
+  font-size: 16px;
+  padding-left: 5px;
 }
 
 /* UTILITIES */
@@ -44,7 +50,7 @@ body {
   color: #1d9bf0;
   font-weight: 550;
 }
-.display-none{
+.display-none {
   display: none;
 }
 
@@ -116,9 +122,9 @@ body {
   color: #71767b;
   line-height: 22px;
 }
-.footer .footer-links .footer-item > li{
+.footer .footer-links .footer-item > li {
   word-spacing: 1px;
-  margin-right:6px;
+  margin-right: 6px;
 }
 
 /* START OF SIGN-UP & LOGIN MODALS */
@@ -146,14 +152,14 @@ body {
   color: #e7e9ea;
   border-radius: 10px;
 }
-.modal-content .first{
+.modal-content .first {
   display: flex;
 }
 .modal-content .title {
   font-size: 31px;
   text-align: center;
   margin-bottom: 20px;
-  margin-top:0;
+  margin-top: 0;
 }
 /* The Close Button */
 .close-btn {
@@ -161,9 +167,9 @@ body {
   font-size: 30px;
   font-weight: bold;
   text-align: end;
-  width:80%;
+  width: 80%;
 }
-.close-btn:hover{
+.close-btn:hover {
   cursor: pointer;
 }
 .authentication-input {
@@ -175,8 +181,8 @@ body {
   border-radius: 5px;
   background-color: black;
 }
-.modal-content .form{
-  height:93%;
+.modal-content .form {
+  height: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -191,126 +197,142 @@ body {
   margin-bottom: 10px;
   color: #e7e9ea;
 }
-.signup-footer{
+.signup-footer {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height:25%;
-  margin-bottom: 10px;
-  width:90%;
+  height: 23%;
+  width: 90%;
+  margin-bottom: 30px;
 }
-.signup-footer .dob-section > select{
+
+.signup-footer .dob-section > select {
   display: block;
-  margin-bottom: 12px;
+  margin: 15px 0;
+  padding:5px;
+  background-color: transparent;
+  color: #e7e9ea;
 }
-.signup-footer .signup-img{
+.signup-footer .img-section {
+  width: 50%;
+  text-align: end;
+}
+
+.signup-footer input[type="file"] {
+  padding: 0;
+  color: transparent;
+  position: absolute;
+  bottom: 18%;
+}
+.signup-footer .signup-img {
   border-radius: 50%;
   height: 100%;
 }
-.modal-content .signup-btn{
+.modal-content .signup-btn {
   text-align: center;
 }
 /* End of Signup Modal */
 
 /* LogIn Modal */
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height:75%;
+  height: 75%;
 }
-.login-form > img{
-  width:120px;
+.login-form > img {
+  width: 120px;
   height: 120px;
 }
-.modal .login-footer{
+.modal .login-footer {
   height: 15%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #71767b;
   opacity: 1; /* Firefox */
 }
 /* End of Login Modal */
 /* ---END OF SIGN-UP & LOGIN MODALS--- */
 
-
-
-
 /* ------ HOMEPAGE.HTML STYLES ------*/
 /* START left navigation menu  */
 
-  .padding-left-right{
-    padding-left:5%;
-    padding-right:5%;
-  }
+.padding-left-right {
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
-  .left-side-menu{
-    font-family: 'Noto Sans', sans-serif;
-    position:fixed;
-    width:227px;
-    height:100%;
-    padding-left:12px;
-    padding-left:12px;
-    z-index:1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 0.1px solid #E7E9EA;
-  }
+.left-side-menu {
+  font-family: "Noto Sans", sans-serif;
+  position: fixed;
+  width: 227px;
+  height: 100%;
+  padding-left: 12px;
+  padding-left: 12px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 0.1px solid #e7e9ea;
+}
 
-  .left-side-menu li{
-    display:list-item;
-    margin-top: 5vh;
-    font-size: 1.25rem;
-  }
+.left-side-menu li {
+  display: list-item;
+  margin-top: 5vh;
+  font-size: 1.25rem;
+}
 
-  .fa-twitter,.fa-house, .fa-user, .fa-right-from-bracket{
-    margin-right: 12px;
-    color:#E7E9EA;
-  }
+.fa-twitter,
+.fa-house,
+.fa-user,
+.fa-right-from-bracket {
+  margin-right: 12px;
+  color: #e7e9ea;
+}
 
-  .left-side-menu span{
-    color:#E7E9EA;
-    font-weight: 600;
-  }
+.left-side-menu span {
+  color: #e7e9ea;
+  font-weight: 600;
+}
 
-  .home-tweet-btn{
-    width:90%;
-    font-weight: 600;
-  }
+.home-tweet-btn {
+  width: 90%;
+  font-weight: 600;
+}
 
-  /* user info section inside the left navigation menu*/
-  .user-info{
-    display:flex;
-    align-items: center;
-    height:64px;
-  }
-  .profile-pic{
-    border: 2px solid #E7E9EA;
-    width:40px;
-    height:40px;
-    border-radius: 50%;
-    background-image: url("/frontend/assets/dummy-profile-pic.png");
-    background-size: cover;
-  }
+/* user info section inside the left navigation menu*/
+.user-info {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+.profile-pic {
+  border: 2px solid #e7e9ea;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url("/frontend/assets/dummy-profile-pic.png");
+  background-size: cover;
+}
 
-  .name{
-    color:#E7E9EA;
-    font-size: 20px;
-    font-weight:600;
-  }
-  .username{
-    color:#71767b;
-    font-size: 15px;
-  }
+.name {
+  color: #e7e9ea;
+  font-size: 20px;
+  font-weight: 600;
+}
+.username {
+  color: #71767b;
+  font-size: 15px;
+}
 
-  .name-username-container{
-    margin-left:10px
-  }
+.name-username-container {
+  margin-left: 10px;
+}
 
-  /* END  left navigation menu  */
+/* END  left navigation menu  */
