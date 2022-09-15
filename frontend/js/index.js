@@ -173,6 +173,21 @@ const showLoginModal = () => {
 // handle login form submit
 const loginUser = (e) => {
   e.preventDefault();
+  const username = login_username.value;
+  const password = login_password.value;
+  const user_login = async () => {
+    try {
+      const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  user_login();
+
 };
 
 // SIGNUP EVENT LISTENERS
