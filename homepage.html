@@ -7,65 +7,61 @@
     <script src="https://kit.fontawesome.com/f95bd4b1c8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/frontend/styles/styles.css" />
 </head>
-<body class="padding-left-right">
+<body>
 
-    <!-- START Left side menu -->
-    <nav class="left-side-menu">
+    <!-- START navigation section, left nav bar -->
+    <header>
 
-        <!-- Home, profile and logout links -->
+        <!-- navigation links  -->
         <ul class="nav-left">
-
-            <!-- small blue twitter icon -->
             <li>
-                <i class="fa-brands fa-twitter fa-xl"></i>
-                
-            </li>
+                <i class="fa-brands fa-twitter  fa-xl"></i>
 
+            </li>
             <!-- home nav button -->
             <li>
-                <a href="#"></a>
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-                
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
             </li>
 
             <!-- profile nav button -->
             <li>
-                <a href="#"></a>
-                <i class="fa-regular fa-user"></i>
-                <span>Profile</span>
-                
+                <a href="#">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Profile</span>
+                </a>
             </li>
 
             <!-- Logout nav button -->
             <li>
-                <a href="#"></a>
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
-                
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
             </li>
 
-            <!-- Tweet button -->
-            <li>
-                <a href="#"></a>
-                <button class="btn btn-lg home-tweet-btn">Tweet</button>
-                
-            </li>
+            <!-- tweer button -->
+            <button class="btn-lg home-tweet-btn">Tweet</button>
+
         </ul>
 
-        <!-- START user info at the bottom of the left side menu -->
+        <!-- user account info  -->
+        <div class="account-info">
+            <a href="">
+                <img class="pp" src="/frontend/assets/dummy-profile-pic.png">
 
-        <div class="user-info">
-            <div class="profile-pic">
+                <div class="name-username">
+                    <span class="name">Name</span>
+                    <span class="username">@username</span>
+                </div>
+            </a>
 
-            </div>
-            <div class="name-username-container">
-                <p class="name">Name</p>
-                <p class="username">@username</p>
-            </div>
-            
-    </nav>
-    <!-- END Left side menu -->
+        </div>
+
+    </header>
+    <!-- END navigation section, left nav bar -->
 
     
 </body>

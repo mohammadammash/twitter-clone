@@ -244,73 +244,12 @@ body {
 /* ------ HOMEPAGE.HTML STYLES ------*/
 /* START left navigation menu  */
 
-  .padding-left-right{
-    padding-left:5%;
-    padding-right:5%;
-  }
+/* END  left navigation menu  */
 
-  .left-side-menu{
-    font-family: 'Noto Sans', sans-serif;
-    position:fixed;
-    width:227px;
-    height:100%;
-    padding-left:12px;
-    padding-left:12px;
-    z-index:1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 0.1px solid #E7E9EA;
-  }
 
-  .left-side-menu li{
-    display:list-item;
-    margin-top: 5vh;
-    font-size: 1.25rem;
-  }
+/* START feed section */
+/* START feed section */
 
-  .fa-twitter,.fa-house, .fa-user, .fa-right-from-bracket{
-    margin-right: 12px;
-    color:#E7E9EA;
-  }
 
-  .left-side-menu span{
-    color:#E7E9EA;
-    font-weight: 600;
-  }
-
-  .home-tweet-btn{
-    width:90%;
-    font-weight: 600;
-  }
-
-  /* user info section inside the left navigation menu*/
-  .user-info{
-    display:flex;
-    align-items: center;
-    height:64px;
-  }
-  .profile-pic{
-    border: 2px solid #E7E9EA;
-    width:40px;
-    height:40px;
-    border-radius: 50%;
-    background-image: url("/frontend/assets/dummy-profile-pic.png");
-    background-size: cover;
-  }
-
-  .name{
-    color:#E7E9EA;
-    font-size: 20px;
-    font-weight:600;
-  }
-  .username{
-    color:#71767b;
-    font-size: 15px;
-  }
-
-  .name-username-container{
-    margin-left:10px
-  }
-
-  /* END  left navigation menu  */
+/* START search section */
+/* END search section */
