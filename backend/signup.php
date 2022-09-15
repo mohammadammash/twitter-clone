@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 
- 
+
 $full_name = $_POST['full_name'];
 $email = $_POST['email'];
 $phone_nbr = $_POST['phone_nbr'];
