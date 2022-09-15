@@ -21,7 +21,7 @@ $hashedpass = hash('sha256',$password.'sayhitwitter');
 
 
 $query = $mysqli->prepare("INSERT INTO users(full_name, email, phone_nbr, password, date_of_birth, joined_in_date, username, bio, banner, avatar_url) VALUE (?,?,?,?,?,?,?,?,?,?)");
-$query->bind_param('ssssssssss', $full_name, $email, $phone_nbr, $hasehpass, $date_of_birth, $joined_in_date, $username, $bio, $banner, $avatar_url); //change to ?,? to strings vars
+$query->bind_param('ssssssssss', $full_name, $email, $phone_nbr, $hashedpass, $date_of_birth, $joined_in_date, $username, $bio, $banner, $avatar_url); //change to ?,? to strings vars
 $query->execute();
 
 $response = [];
