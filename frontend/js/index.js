@@ -1,16 +1,27 @@
+//login
 const login_modal = document.getElementById("login-modal");
 const login_submit_btn = document.getElementById("login-submit");
 const login_show_btn = document.getElementById("login-show");
 const close_login = document.getElementById("close-login");
-
+// signup
 const signup_modal = document.getElementById("signup-modal");
 const signup_submit_btn = document.getElementById("signup-submit");
 const signup_show_btn = document.getElementById("signup-show");
 const signup_show_link = document.getElementById("signup-link");
 const close_signup = document.getElementById("close-signup");
+// signup-dropdowns
 const daySelect = document.getElementById("signup-birthday");
 const monthSelect = document.getElementById("signup-birthmonth");
 const yearSelect = document.getElementById("signup-birthyear");
+// signup-inputs
+const signup_full_name = document.getElementById('signup-name');
+const signup_phone_nb = document.getElementById('signup-phone');
+const signup_username = document.getElementById('signup-username');
+const signup_password = document.getElementById('signup-password');
+const signup_email = document.getElementById("signup-password");
+const birthday = document.getElementById('signup-birthday');
+const birthmonth = document.getElementById('signup-birthmonth');
+const birthyear = document.getElementById('signup-birthyear');
 
 // SIGN UP FUNCTIONS
 const showSignupModal = () => {
@@ -22,6 +33,7 @@ const showSignupModal = () => {
 const createNewUser = (e) => {
   e.preventDefault();
 };
+
 
 // add and manage data to signup-dropdowns (days-months-years)
 const months = [
@@ -110,6 +122,7 @@ function populateYears() {
     yearSelect.appendChild(option);
   }
 }
+
 
 // LOGIN FUNCTIONS
 const showLoginModal = () => {
