@@ -24,13 +24,14 @@ const signup_img_show = document.getElementById("signup-img");
 const birthday = document.getElementById("signup-birthday");
 const birthmonth = document.getElementById("signup-birthmonth");
 const birthyear = document.getElementById("signup-birthyear");
-var base64StringImg;
+var base64String;
 
 // show image and save url
 function uploadImage(){
     if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
+        base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
         signup_img_show.src = e.target.result;
       };
       reader.readAsDataURL(this.files[0]);
@@ -66,8 +67,7 @@ const createNewUser = (e) => {
   const birthmonth = monthSelect.options[monthSelect.selectedIndex].value;
   const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
   const joined_in_date = getTodayDate(); //as:  dd/mm/yy
-  const avatar_url = 
-  console.log(avatar_url);
+  const avatar_url = base64String ? base64String : '';
 
   const add_user = async () => {
     try {
