@@ -16,6 +16,11 @@ a,
 button {
   cursor: pointer;
 }
+input {
+  color: #e7e9ea;
+  font-size: 16px;
+  padding-left: 5px;
+}
 
 /* UTILITIES */
 .btn {
@@ -203,7 +208,21 @@ body {
 }
 .signup-footer .dob-section > select {
   display: block;
-  margin-bottom: 12px;
+  margin: 15px 0;
+  padding:5px;
+  background-color: transparent;
+  color: #e7e9ea;
+}
+.signup-footer .img-section {
+  width: 50%;
+  text-align: end;
+}
+
+.signup-footer input[type="file"] {
+  padding: 0;
+  color: transparent;
+  position: absolute;
+  bottom: 18%;
 }
 .signup-footer .signup-img {
   border-radius: 50%;
@@ -242,6 +261,80 @@ body {
 
 /* ------ HOMEPAGE.HTML STYLES ------*/
 /* START left navigation menu  */
+
+.padding-left-right {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.left-side-menu {
+  font-family: "Noto Sans", sans-serif;
+  position: fixed;
+  width: 227px;
+  height: 100%;
+  padding-left: 12px;
+  padding-left: 12px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 0.1px solid #e7e9ea;
+}
+
+.left-side-menu li {
+  display: list-item;
+  margin-top: 5vh;
+  font-size: 1.25rem;
+}
+
+.fa-twitter,
+.fa-house,
+.fa-user,
+.fa-right-from-bracket {
+  margin-right: 12px;
+  color: #e7e9ea;
+}
+
+.left-side-menu span {
+  color: #e7e9ea;
+  font-weight: 600;
+}
+
+.home-tweet-btn {
+  width: 90%;
+  font-weight: 600;
+}
+
+/* user info section inside the left navigation menu*/
+.user-info {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+.profile-pic {
+  border: 2px solid #e7e9ea;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url("/frontend/assets/dummy-profile-pic.png");
+  background-size: cover;
+}
+
+.name {
+  color: #e7e9ea;
+  font-size: 20px;
+  font-weight: 600;
+}
+.username {
+  color: #71767b;
+  font-size: 15px;
+}
+
+.name-username-container {
+  margin-left: 10px;
+}
+
+/* END  left navigation menu  */
 .fa-twitter,
 .fa-house,
 .fa-user,

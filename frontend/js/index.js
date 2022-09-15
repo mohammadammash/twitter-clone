@@ -3,6 +3,9 @@ const login_modal = document.getElementById("login-modal");
 const login_submit_btn = document.getElementById("login-submit");
 const login_show_btn = document.getElementById("login-show");
 const close_login = document.getElementById("close-login");
+// login-inputs
+const login_username = document.getElementById('login-username');
+const login_password = document.getElementById('login-password');
 // signup
 const signup_modal = document.getElementById("signup-modal");
 const signup_submit_btn = document.getElementById("signup-submit");
@@ -96,27 +99,6 @@ const createNewUser = (e) => {
 };
 
 // add and manage data to signup-dropdowns (days-months-years)
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-for (let i = 0; i < months.length; i++) {
-  const option = document.createElement("option");
-  option.textContent = months[i];
-  monthSelect.appendChild(option);
-  monthSelect.value = "January";
-}
-let previousDay;
 function populateDays(month) {
   //Delete all of the children of the day dropdown
   //if they do exist
@@ -191,6 +173,21 @@ const showLoginModal = () => {
 // handle login form submit
 const loginUser = (e) => {
   e.preventDefault();
+  const username = login_username.value;
+  const password = login_password.value;
+  const user_login = async () => {
+    try {
+      const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  user_login();
+
 };
 
 // SIGNUP EVENT LISTENERS
@@ -207,6 +204,8 @@ close_login.addEventListener("click", () =>
   login_modal.classList.add("display-none")
 );
 signup_img_url.addEventListener('change',uploadImage);
+
+// DATE-OF-BIRTH DROPDOWNS:
 // check data of dropdowns on change
 yearSelect.onchange = function () {
   populateDays(monthSelect.value);
@@ -217,6 +216,27 @@ monthSelect.onchange = function () {
 daySelect.onchange = function () {
   previousDay = daySelect.value;
 };
-// runs for the first time when page-loaded
+// runs for the first time when page-loaded to generate dropdowns
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+for (let i = 0; i < months.length; i++) {
+  const option = document.createElement("option");
+  option.textContent = months[i];
+  monthSelect.appendChild(option);
+  monthSelect.value = "January";
+}
+let previousDay;
 populateDays(monthSelect.value);
 populateYears();
