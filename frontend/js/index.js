@@ -14,14 +14,25 @@ const daySelect = document.getElementById("signup-birthday");
 const monthSelect = document.getElementById("signup-birthmonth");
 const yearSelect = document.getElementById("signup-birthyear");
 // signup-inputs
-const signup_full_name = document.getElementById('signup-name');
-const signup_phone_nb = document.getElementById('signup-phone');
-const signup_username = document.getElementById('signup-username');
-const signup_password = document.getElementById('signup-password');
-const signup_email = document.getElementById("signup-password");
-const birthday = document.getElementById('signup-birthday');
-const birthmonth = document.getElementById('signup-birthmonth');
-const birthyear = document.getElementById('signup-birthyear');
+const signup_full_name = document.getElementById("signup-name");
+const signup_phone_nb = document.getElementById("signup-phone");
+const signup_username = document.getElementById("signup-username");
+const signup_password = document.getElementById("signup-password");
+const signup_email = document.getElementById("signup-email");
+const birthday = document.getElementById("signup-birthday");
+const birthmonth = document.getElementById("signup-birthmonth");
+const birthyear = document.getElementById("signup-birthyear");
+
+// find today's date as dd/mm/yyyy:
+const getTodayDate = ()=>{
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; 
+var yyyy = today.getFullYear();
+if(dd<10) dd='0'+dd;
+if(mm<10) mm='0'+mm;
+return dd+'/'+mm+'/'+yyyy;
+}
 
 // SIGN UP FUNCTIONS
 const showSignupModal = () => {
@@ -32,8 +43,42 @@ const showSignupModal = () => {
 // handle signup form submit
 const createNewUser = (e) => {
   e.preventDefault();
-};
+  const full_name = signup_full_name.value;
+  const phone_nbr = signup_phone_nb.value;
+  const username = signup_username.value;
+  const password = signup_password.value;
+  const email = signup_email.value;
+  const birthday = daySelect.options[daySelect.selectedIndex].value;
+  const birthmonth = monthSelect.options[monthSelect.selectedIndex].value;
+  const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
+  const joined_in_date = getTodayDate(); //as:  dd/mm/yy
+  const avatar_url = 'Hfsgsdfdsffdsdfsfsdf';
 
+  const add_user = async () => {
+    try {
+      const url = "http://localhost/twitter-clone/backend/signup.php";
+      const response = await fetch(url, {
+        method: "POST",
+        body: new URLSearchParams({
+          full_name,
+          email,
+          phone_nbr,
+          username,
+          password,
+          date_of_birth: `${birthday}/${birthmonth}/${birthyear}`,
+          joined_in_date,
+          avatar_url,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  add_user();
+};
 
 // add and manage data to signup-dropdowns (days-months-years)
 const months = [
@@ -123,7 +168,6 @@ function populateYears() {
   }
 }
 
-
 // LOGIN FUNCTIONS
 const showLoginModal = () => {
   // there is no way to access login from signup page => no need to hide signup-modal hence it is already hidden
@@ -133,7 +177,6 @@ const showLoginModal = () => {
 const loginUser = (e) => {
   e.preventDefault();
 };
-
 
 // SIGNUP EVENT LISTENERS
 signup_show_btn.addEventListener("click", showSignupModal);
