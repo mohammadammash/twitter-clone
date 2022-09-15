@@ -4,8 +4,8 @@ const login_submit_btn = document.getElementById("login-submit");
 const login_show_btn = document.getElementById("login-show");
 const close_login = document.getElementById("close-login");
 // login-inputs
-const login_username = document.getElementById('login-username');
-const login_password = document.getElementById('login-password');
+const login_username = document.getElementById("login-username");
+const login_password = document.getElementById("login-password");
 // signup
 const signup_modal = document.getElementById("signup-modal");
 const signup_submit_btn = document.getElementById("signup-submit");
@@ -29,16 +29,30 @@ const birthmonth = document.getElementById("signup-birthmonth");
 const birthyear = document.getElementById("signup-birthyear");
 var base64String;
 
+// global localStorage - check if user exists(on page load - or after login or after sign up)
+const checkCurrentUser = () => {
+  let user = window.localStorage.getItem("user");
+  if (!user) {
+    console.log("nop");
+
+  } else {
+    console.log("yup");
+    current = JSON.parse(localStorage.getItem("user"));
+    console.log(current);
+    // REDIRECT TO HOME PAGE /FEED PAGE
+  }
+};
+
 // show image and save url
-function uploadImage(){
-    if (this.files && this.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
-        signup_img_show.src = e.target.result;
-      };
-      reader.readAsDataURL(this.files[0]);
-    }
+function uploadImage() {
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+      signup_img_show.src = e.target.result;
+    };
+    reader.readAsDataURL(this.files[0]);
+  }
 }
 
 // find today's date as dd/mm/yyyy:
@@ -70,7 +84,7 @@ const createNewUser = (e) => {
   const birthmonth = monthSelect.options[monthSelect.selectedIndex].value;
   const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
   const joined_in_date = getTodayDate(); //as:  dd/mm/yy
-  const avatar_url = base64String ? base64String : '';
+  const avatar_url = base64String ? base64String : "";
 
   const add_user = async () => {
     try {
@@ -89,7 +103,18 @@ const createNewUser = (e) => {
         }),
       });
       const data = await response.json();
-      console.log(data);
+      const user = {
+        full_name: full_name,
+        email: email,
+        phone_nbr: phone_nbr,
+        username: username,
+        password: password,
+        date_of_birth: `${birthday}/${birthmonth}/${birthyear}`,
+        joined_in_date: joined_in_date,
+        avatar_url: avatar_url,
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+      checkCurrentUser(); //to redirect to home page if user added
     } catch (err) {
       console.log(err);
     }
@@ -180,14 +205,14 @@ const loginUser = (e) => {
       const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+      // add user as currentUser
+      localStorage.setItem("user", JSON.stringify(data));
+      checkCurrentUser(); //to redirect to home page if user added
     } catch (err) {
       console.log(err);
     }
   };
-
   user_login();
-
 };
 
 // SIGNUP EVENT LISTENERS
@@ -203,7 +228,10 @@ login_submit_btn.addEventListener("click", loginUser);
 close_login.addEventListener("click", () =>
   login_modal.classList.add("display-none")
 );
-signup_img_url.addEventListener('change',uploadImage);
+signup_img_url.addEventListener("change", uploadImage);
+
+// local Storage - check when loading if there is a user
+window.addEventListener("load", checkCurrentUser);
 
 // DATE-OF-BIRTH DROPDOWNS:
 // check data of dropdowns on change
