@@ -505,7 +505,6 @@ header {
 
 /* START search section */
 .search-section {
-  border: 2px solid red;
   width: 50%;
   padding: 0 1.5%;
   display: flex;
@@ -535,5 +534,35 @@ header {
   font-size: 15px;
   font-weight: 450;
   border-radius: 9999px;
+}
+
+/* terms of cond styling */
+.termsofcond {
+  height: 20%;
+  color: #71767b;
+  display: flex;
+  justify-content: space-around;
+  height: fit-content;
+  max-width: 355px;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.terms-links li {
+  list-style-type: none;
+  font-size: 12px;
+  color: #71767b;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.terms-links {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.terms-links a:hover {
+  border-bottom: 1px solid #71767b;
 }
 /* END search section */
