@@ -9,7 +9,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 $full_name = $_POST['full_name'];
 $email = $_POST['email'];
 $phone_nbr = $_POST['phone_nbr'];
-$password = $_POST['password'];
+$password = hash('sha256',$_POST['password']);
 $date_of_birth = $_POST['date_of_birth'];
 $username = $_POST['username'];
 $joined_in_date = $_POST['joined_in_date'];
