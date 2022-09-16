@@ -29,10 +29,38 @@ const getTodayDate = () => {
   return dd + "/" + mm + "/" + yyyy;
 };
 
+// handle newTweet addition
+const addNewTweet = (e) => {
+  const text = newtweet_text.value;
+  const user_id = JSON.parse(localStorage.getItem('user')).id;
+  const created_datetime = getTodayDate(); //as:  dd/mm/yy
+  const image_url = base64String ? base64String : "";
 
+  const add_tweet = async () => {
+    try {
+      const url = "http://localhost/twitter-clone/backend/add_tweet.php";
+      const response = await fetch(url, {
+        method: "POST",
+        body: new URLSearchParams({
+          text,
+          image_url,
+          user_id,
+          created_datetime,
+          nb_of_likes: "0",
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  add_tweet();
+};
 
 
 // whenever we change the image we add, recreate base64 and show the new image
 newtweet_imgurl.addEventListener("change", uploadImage);
 // submit the new tweet
-// newtweet_submit.addEventListener('click',addNewTweet);
+newtweet_submit.addEventListener('click',addNewTweet);
