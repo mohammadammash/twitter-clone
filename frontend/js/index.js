@@ -206,6 +206,7 @@ const loginUser = (e) => {
       const response = await fetch(url);
       const data = await response.json();
       // add user as currentUser
+      console.log(data);
       localStorage.setItem("user", JSON.stringify(data));
       checkCurrentUser(); //to redirect to home page if user added
     } catch (err) {
