@@ -518,8 +518,8 @@ header {
 
 .feed-content {
   width: 100%;
-  border-left: 1px solid #71767b;
-  border-right: 1px solid #71767b;
+  /* border-left: 1px solid #71767b;
+  border-right: 1px solid #71767b; */
 }
 
 .feed-container {
@@ -766,11 +766,9 @@ header {
   width: 100%;
   height: 20vh;
   position: relative;
-}
-
-.banner-container img {
-  width: 100%;
-  height: 100%
+  background-image: url("/assets/test_img.jpg");
+  background-size: cover;
+  background-position-y: center;
 }
 
 .banner-pp-container {
@@ -831,7 +829,7 @@ header {
   margin-top: 10px;
   display: flex;
   padding-bottom: 15px;
-  border-bottom: 1px solid #71767b;
+
 }
 
 .white {
@@ -862,18 +860,17 @@ header {
 
 /* Tweets, MyTweets */
 .tweets-display-container {
-  border: 2px solid green;
   padding-top: 5%;
   padding-bottom: 5%;
   color: #e7e9ea;
   font-size: 20px;
   font-weight: 700;
   display: flex;
-  margin-left: 3%;
   justify-content: space-between;
   width: 97%;
-  padding-left: 12%;
+  padding-left: 15%;
   padding-right: 15%;
+  border-top: 1px solid #71767b;
 }
 
 .tweets-display-container a:hover {
