@@ -473,6 +473,7 @@ header {
   margin-left: 29%;
   height: 100%;
   width: 35%;
+  width:40%;
 }
 .feed-container .feed{
   height: 100%;
@@ -665,3 +666,65 @@ header {
   border-bottom: 1px solid #71767b;
 }
 /* END search section */
+
+
+/* To remove scroll bar in the iframe */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+*{
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* START profile page  */
+.fa-arrow-left-long,
+.fa-square-left {
+    color: #e7e9ea;
+}
+
+.home-heading .btn-imgicon img {
+    width: 100%;
+    height: 100%;
+}
+
+.arrow-left {
+    width: 20px;
+    height: 20px;
+    margin-right: 13px;
+}
+
+.banner-container {
+  width: 100%;
+  height: 20vh;
+  position:relative;
+}
+
+.banner-container img {
+  width: 100%;
+  height: 100%
+}
+
+.banner-pp-container {
+  border: 4px solid white;
+  width: 125px;
+  height: 125px;
+  border-radius:50%;
+  background-image: url("/assets/dummy-profile-pic.png");
+  background-size: cover;
+  margin-left:16px;
+  margin-top:-62.5px;
+  z-index: 10;
+  position:absolute;
+}
+/* END profile page  */
