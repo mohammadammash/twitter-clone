@@ -30,7 +30,7 @@ const getTodayDate = () => {
 };
 
 // handle newTweet addition
-const addNewTweet = (e) => {
+const addNewTweet = () => {
   const text = newtweet_text.value;
   const user_id = JSON.parse(localStorage.getItem('user')).id;
   const created_datetime = getTodayDate(); //as:  dd/mm/yy
@@ -59,8 +59,28 @@ const addNewTweet = (e) => {
   add_tweet();
 };
 
+// GET and Show Tweets
+const showTweets = ()=>{
+    const user = JSON.parse(localStorage.getItem('user'))[0];
+
+    const get_tweets = async () => {
+      try {
+        const url = `http://localhost/twitter-clone/backend/get_tweets.php?user_id=${user.id}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    get_tweets();
+}
+
 
 // whenever we change the image we add, recreate base64 and show the new image
 newtweet_imgurl.addEventListener("change", uploadImage);
 // submit the new tweet
 newtweet_submit.addEventListener('click',addNewTweet);
+// showing tweets of followed users when page loads:
+window.addEventListener('load',showTweets); 
