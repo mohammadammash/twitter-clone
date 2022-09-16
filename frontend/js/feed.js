@@ -1,9 +1,10 @@
-const newtweet_text = document.getElementById('newtweet-text');
-const newtweet_imgurl = document.getElementById('newtweet-imgurl');
-const newtweet_submit = document.getElementById('newtweet-submit');
-const newtweet_imgshow = document.getElementById('newtweet-imgshow');
+const newtweet_text = document.getElementById("newtweet-text");
+const newtweet_imgurl = document.getElementById("newtweet-imgurl");
+const newtweet_submit = document.getElementById("newtweet-submit");
+const newtweet_imgshow = document.getElementById("newtweet-imgshow");
 var base64String;
-
+// to push tweets from db into;
+const feed_content = document.getElementById("feed-content");
 
 // show image and save url (didn't use arrow function => 'this' doen't work well inside)
 function uploadImage() {
@@ -12,7 +13,7 @@ function uploadImage() {
     reader.onload = function (e) {
       base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
       newtweet_imgshow.src = e.target.result;
-      newtweet_imgshow.classList.remove('display-none');
+      newtweet_imgshow.classList.remove("display-none");
     };
     reader.readAsDataURL(this.files[0]);
   }
@@ -30,9 +31,9 @@ const getTodayDate = () => {
 };
 
 // handle newTweet addition
-const addNewTweet = (e) => {
+const addNewTweet = () => {
   const text = newtweet_text.value;
-  const user_id = JSON.parse(localStorage.getItem('user')).id;
+  const user_id = JSON.parse(localStorage.getItem("user")).id;
   const created_datetime = getTodayDate(); //as:  dd/mm/yy
   const image_url = base64String ? base64String : "";
 
@@ -59,8 +60,24 @@ const addNewTweet = (e) => {
   add_tweet();
 };
 
+// fetch GET-API from db to get all tweets with matching user_id in localStorage:
+const getTweets = async () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+    try {
+      const url = `http://localhost/twitter-clone/backend/get_tweets.php?user_id=${user.id}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      for(let tweet of data){
+        showTweet(tweet)
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 // whenever we change the image we add, recreate base64 and show the new image
 newtweet_imgurl.addEventListener("change", uploadImage);
 // submit the new tweet
-newtweet_submit.addEventListener('click',addNewTweet);
+newtweet_submit.addEventListener("click", addNewTweet);
+// Each time page loads - I want to show the tweets for the user:
+window.addEventListener("load", getTweets);
