@@ -27,7 +27,7 @@
       </div>
       <!-- Left button (Edit profile) -->
       <div class="edit-prof-btn">
-        <button>Edit profile</button>
+        <button id="edit-p">Edit profile</button>
       </div>
       <!-- Name and username -->
       <div class="name-username-banner">
@@ -136,6 +136,45 @@
     </div>
   </div>
   <!-- END feed content -->
+
+
+  <!-- !START Edit Profile Modal -->>
+  <div class="modal-bg" id="modal-bg">
+  <div class="modal-profile" >
+
+      <div class="model-title">
+        <div class="edit-pp-x">
+          <span>X</span>
+          <p>Edit Profile</p>
+        </div>
+        <div class="save-btn">
+          <button id="save_pofile">Save</button>
+        </div>
+      </div>
+      <!-- Modify banner -->
+      <div class="banner-container center-items">
+        <div class="upload-cam-div">
+          <a><i class="fa-solid fa-camera"></i></a>
+        </div>
+      </div>
+      <!-- Modify pp -->
+      <div class="profile-pic-modal center-items pic-shrink">
+        <div class="upload-cam-div">
+          <a><i class="fa-solid fa-camera"></i></a>
+        </div>
+      </div>
+      <!-- Modify Name -->
+      <div class="modal-inputs">
+        <label for="name">Name</label>
+        <input type="text" name="name">
+        <!-- Modify Bio -->
+        <label for="bio">Bio</label>
+        <input type="text" name="bio">
+      </div>
+    </div>
+  </div>
+  <!-- !END Edit Profile Modal -->
+  <script src="/js/editProfile.js"></script>
 </body>
 
 </html>
