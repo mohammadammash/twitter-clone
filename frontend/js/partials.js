@@ -16,6 +16,7 @@ const showInSearchContent = (user) => {
             <a href="" class="tweet-obj-name">
               ${user.full_name}
               <span class="tweet-obj-username"> @${user.username} </span>
+                <span id='user_id' class="display-none"> ${user.id}</span>
             </a>
           </div>
           <div class="tweet-obj-text">
