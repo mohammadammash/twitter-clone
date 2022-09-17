@@ -83,6 +83,9 @@ const showTweets = () => {
               <span class="tweet-obj-time">
                 &#183${tweet.created_datetime}
               </span>
+              <span id='tweet_user_id' class="display-none">
+                &#183${tweet.tweet_user_id}
+              </span>
             </a>
           </div>
           <div class="tweet-obj-text">
@@ -106,7 +109,6 @@ const showTweets = () => {
       const response = await fetch(url);
       const data = await response.json();
       for (let tweet of data) {
-        console.log(tweet);
         addTweet_to_feed(tweet);
       }
     } catch (err) {
