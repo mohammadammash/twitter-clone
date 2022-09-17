@@ -85,10 +85,7 @@ const addTweet_to_feed = (tweet) => {
           </div>
         </div>
       </div>`;
-  feed_content.innerHTML =
-    tweet_HTML + feed_content.innerHTML
-      ? user.id === tweet.user_id
-      : feed_content.innerHTML + tweet_HTML;
+  feed_content.innerHTML += tweet_HTML;
 };
 
 // GET and Show Tweets
