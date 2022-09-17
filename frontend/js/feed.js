@@ -4,7 +4,6 @@ const newtweet_submit = document.getElementById("newtweet-submit");
 const newtweet_imgshow = document.getElementById("newtweet-imgshow");
 var base64String;
 const feed_content = document.getElementById("feed-content");
-
 // show image and save url (didn't use arrow function => 'this' doen't work well inside)
 function uploadImage() {
   if (this.files && this.files[0]) {
