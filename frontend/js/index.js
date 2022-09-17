@@ -28,13 +28,11 @@ const birthday = document.getElementById("signup-birthday");
 const birthmonth = document.getElementById("signup-birthmonth");
 const birthyear = document.getElementById("signup-birthyear");
 var base64String;
-
 // global localStorage - check if user exists(on page load - or after login or after sign up)
 const checkCurrentUser = () => {
   let user = window.localStorage.getItem("user");
   if (!user) {
     console.log("nop");
-
   } else {
     console.log("yup");
     current = JSON.parse(localStorage.getItem("user"));
@@ -206,7 +204,6 @@ const loginUser = (e) => {
       const response = await fetch(url);
       const data = await response.json();
       // add user as currentUser
-      console.log(data);
       localStorage.setItem("user", JSON.stringify(data));
       checkCurrentUser(); //to redirect to home page if user added
     } catch (err) {

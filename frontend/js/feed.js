@@ -26,22 +26,37 @@ function uploadImage() {
   }
 }
 
-// find today's date as dd/mm/yyyy:
-const getTodayDate = () => {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-  var yyyy = today.getFullYear();
-  if (dd < 10) dd = "0" + dd;
-  if (mm < 10) mm = "0" + mm;
-  return dd + "/" + mm + "/" + yyyy;
-};
+// return diff between now and tweet creation/post time:
+function timeDifference(tweetDate) {
+  const rightnow = Date.now();
+
+  //difference in sec
+  const sec = Math.abs(rightnow - tweetDate) / 1000;
+  // get total days between two dates:
+  const days = Math.floor(sec / 86400);
+  // months:
+  const months = Math.floor(days / 30);
+  //years:
+  const years = Math.floor(months / 12);
+  // get hours
+  const hours = Math.floor(sec / 3600);
+  // get minutes
+  const minutes = Math.floor(sec / 60);
+  // get seconds
+
+  if (years > 0) return `${years}y`;
+  else if (months > 0) return `${months}m`;
+  else if (days > 0) return `${days}d`;
+  else if (hours > 0) return `${hours}h`;
+  else if (minutes > 0) return `${minutes}m`;
+  return `${Math.floor(sec)}s`;
+}
 
 // handle newTweet addition
 const addNewTweet = () => {
   const text = newtweet_text.value;
   const user_id = JSON.parse(localStorage.getItem("user"))[0].id;
-  const created_datetime = getTodayDate(); //as:  dd/mm/yy
+  const created_datetime = Date.now();
   const image_url = base64String ? base64String : "";
 
   const add_tweet = async () => {
@@ -72,6 +87,7 @@ const showTweets = () => {
   const user = JSON.parse(localStorage.getItem("user"))[0];
 
   const addTweet_to_feed = (tweet) => {
+    const dateDiff = timeDifference(tweet.created_datetime);
     const tweet_HTML = `
       <div class="tweet-object">
         <img class="pp" src="${tweet.avatar_url}" />
@@ -81,7 +97,7 @@ const showTweets = () => {
               ${tweet.tweet_user_name}
               <span class="tweet-obj-username"> @${tweet.tweet_username} </span>
               <span class="tweet-obj-time">
-                &#183${tweet.created_datetime}
+                &#183${dateDiff}
               </span>
               <span id='tweet_user_id' class="display-none">
                 &#183${tweet.tweet_user_id}
