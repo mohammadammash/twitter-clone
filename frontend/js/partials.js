@@ -6,8 +6,23 @@ const username = document.getElementById("username");
 const search_bar = document.getElementById('search-text');
 const search_content = document.getElementById("search-content");
 
-const getUsers = ()=>{
-  console.log('I am changing!!');
+// add the users to the search content in '../show/partials.html'
+const showInSearchContent = user=>{
+  console.log(user);
+}
+
+// fetch the users using search query
+const getUsers = async ()=>{
+  const search_text = search_bar.value;
+  try{
+    const url = `http://localhost/twitter-clone/backend/search_by_user.php?search_text=${search_text}`
+    const response = await fetch(url);
+    const data = await response.json();
+    for(let user of data) showInSearchContent(user);
+  }
+  catch(err){
+    console.log(err);
+  }
 }
 
 // to check if there is a currentUser
