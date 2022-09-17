@@ -55,7 +55,7 @@ function timeDifference(tweetDate) {
 // handle newTweet addition
 const addNewTweet = () => {
   const text = newtweet_text.value;
-  const user_id = JSON.parse(localStorage.getItem("user"))[0].id;
+  const user = JSON.parse(localStorage.getItem("user"));
   const created_datetime = Date.now();
   const image_url = base64String ? base64String : "";
 
@@ -67,13 +67,22 @@ const addNewTweet = () => {
         body: new URLSearchParams({
           text,
           image_url,
-          user_id,
+          user_id: user.id,
           created_datetime,
           nb_of_likes: "0",
         }),
       });
       const data = await response.json();
-      console.log(data);
+      // append to user['tweets'] in localStorage the new added tweet
+      user["tweets"].push({
+        text,
+        image_url,
+        user_id: user.id,
+        created_datetime,
+        nb_of_likes: "0",
+      });
+      localStorage.setItem("user", JSON.stringify(user)); //update localstorage
+      console.log(user);
     } catch (err) {
       console.log(err);
     }
@@ -84,8 +93,7 @@ const addNewTweet = () => {
 
 // GET and Show Tweets
 const showTweets = () => {
-  const user = JSON.parse(localStorage.getItem("user"))[0];
-  console.log(user.id);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const addTweet_to_feed = (tweet) => {
     const dateDiff = timeDifference(tweet.created_datetime);
@@ -125,9 +133,15 @@ const showTweets = () => {
       const url = `http://localhost/twitter-clone/backend/get_tweets.php?user_id=${user.id}`;
       const response = await fetch(url);
       const data = await response.json();
+      const tweets = [];
+      // add tweets to local storage inside the "user['tweets']"
       for (let tweet of data) {
+        tweets.push(tweet);
         addTweet_to_feed(tweet);
       }
+      user["tweets"] = tweets;
+      localStorage.setItem("user", JSON.stringify(user)); //update localstorage
+      console.log(user);
     } catch (err) {
       console.log(err);
     }

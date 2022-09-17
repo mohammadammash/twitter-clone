@@ -50,9 +50,9 @@ const checkCurrentUser = () => {
   if (user) {
     user = JSON.parse(user);
     [user_img.src, full_name.textContent, username.textContent] = [
-      user[0].avatar_url,
-      user[0].full_name,
-      user[0].username,
+      user.avatar_url,
+      user.full_name,
+      user.username,
     ];
   } else {
     // if there is no user => redirect to home page
