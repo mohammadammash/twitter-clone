@@ -52,44 +52,12 @@ function timeDifference(tweetDate) {
   return `${Math.floor(sec)}s`;
 }
 
-// handle newTweet addition
-const addNewTweet = () => {
-  const text = newtweet_text.value;
-  const user_id = JSON.parse(localStorage.getItem("user"))[0].id;
-  const created_datetime = Date.now();
-  const image_url = base64String ? base64String : "";
+// add tweet to feed
+const addTweet_to_feed = (tweet) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const dateDiff = timeDifference(tweet.created_datetime);
 
-  const add_tweet = async () => {
-    try {
-      const url = "http://localhost/twitter-clone/backend/add_tweet.php";
-      const response = await fetch(url, {
-        method: "POST",
-        body: new URLSearchParams({
-          text,
-          image_url,
-          user_id,
-          created_datetime,
-          nb_of_likes: "0",
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  add_tweet();
-};
-
-// GET and Show Tweets
-const showTweets = () => {
-  const user = JSON.parse(localStorage.getItem("user"))[0];
-  console.log(user.id);
-
-  const addTweet_to_feed = (tweet) => {
-    const dateDiff = timeDifference(tweet.created_datetime);
-    const tweet_HTML = `
+  const tweet_HTML = `
       <div class="tweet-object">
         <img class="pp" src="${tweet.avatar_url}" />
         <div class="tweet-obj-contents">
@@ -117,23 +85,73 @@ const showTweets = () => {
           </div>
         </div>
       </div>`;
-    feed_content.innerHTML += tweet_HTML;
-  };
+  feed_content.innerHTML += tweet_HTML;
+};
+
+// GET and Show Tweets
+const showTweets = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   //fetch tweets from API, and send tweet to be created as html element
   const get_tweets = async () => {
     try {
       const url = `http://localhost/twitter-clone/backend/get_tweets.php?user_id=${user.id}`;
       const response = await fetch(url);
       const data = await response.json();
+      const tweets = [];
+      // add tweets to local storage inside the "user['tweets']"
       for (let tweet of data) {
+        tweets.push(tweet);
         addTweet_to_feed(tweet);
       }
+      user["tweets"] = tweets;
+      localStorage.setItem("user", JSON.stringify(user)); //update localstorage
+      console.log(user);
     } catch (err) {
       console.log(err);
     }
   };
 
   get_tweets();
+};
+
+// handle newTweet addition
+const addNewTweet = () => {
+  const text = newtweet_text.value;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const created_datetime = Date.now();
+  const image_url = base64String ? base64String : "";
+
+  const add_tweet = async () => {
+    try {
+      const url = "http://localhost/twitter-clone/backend/add_tweet.php";
+      const response = await fetch(url, {
+        method: "POST",
+        body: new URLSearchParams({
+          text,
+          image_url,
+          user_id: user.id,
+          created_datetime,
+          nb_of_likes: "0",
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      // append to user['tweets'] in localStorage the new added tweet
+      user["tweets"].push({
+        'text': text,
+        'image_url': image_url,
+        'user_id': user.id,
+        'created_datetime': created_datetime,
+        'nb_of_likes': "0",
+      });
+      localStorage.setItem("user", JSON.stringify(user)); //update localstorage
+      console.log(user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  add_tweet();
 };
 
 // whenever we change the image we add, recreate base64 and show the new image
