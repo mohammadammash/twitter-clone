@@ -105,7 +105,7 @@ const showTweets = () => {
       }
       user["tweets"] = tweets;
       localStorage.setItem("user", JSON.stringify(user)); //update localstorage
-      console.log(user);
+      console.log(user)
     } catch (err) {
       console.log(err);
     }

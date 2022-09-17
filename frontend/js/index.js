@@ -136,19 +136,20 @@ const showLoginModal = () => {
 // handle login form submit //e is by default null if we called login after signup and same for ternary assigning
 const loginUser = (e = "") => {
   if (e) e.preventDefault();
-  const username = login_username.value
-    ? login_username.value
-    : signup_username.value;
-  const password = login_password.value
-    ? login_password.value
-    : signup_password.value;
+  let username, password;
+  // const username = login_username.value
+  // const password = login_password.value
+  if (signup_username.value) username = signup_username.value;
+  else username = login_username.value;
+  if (signup_password.value) password = signup_password.value;
+  else password = login_password.value;
   const user_login = async () => {
     try {
       const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
       const response = await fetch(url);
       const data = await response.json();
       // add user as currentUser
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data[0]));
       checkCurrentUser(); //to redirect to home page if user added
     } catch (err) {
       console.log(err);
