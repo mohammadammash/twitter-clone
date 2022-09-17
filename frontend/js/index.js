@@ -28,16 +28,13 @@ const birthday = document.getElementById("signup-birthday");
 const birthmonth = document.getElementById("signup-birthmonth");
 const birthyear = document.getElementById("signup-birthyear");
 var base64String;
+
 // global localStorage - check if user exists(on page load - or after login or after sign up)
 const checkCurrentUser = () => {
   let user = window.localStorage.getItem("user");
-  if (!user) {
-    console.log("nop");
-  } else {
+  if (user) {
     console.log("yup");
-    current = JSON.parse(localStorage.getItem("user"));
-    console.log(current);
-    // REDIRECT TO HOME PAGE /FEED PAGE
+    window.location.href = "./show/partials.html";
   }
 };
 
@@ -62,63 +59,6 @@ const getTodayDate = () => {
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
   return dd + "/" + mm + "/" + yyyy;
-};
-
-// SIGN UP FUNCTIONS
-const showSignupModal = () => {
-  // make sure login-modal is hidden(add display-none) - hence we can go directly from login-modal to sign-up modal
-  login_modal.classList.add("display-none"); //note: it have no effect if class already exists
-  signup_modal.classList.remove("display-none");
-};
-// handle signup form submit
-const createNewUser = (e) => {
-  e.preventDefault();
-  const full_name = signup_full_name.value;
-  const phone_nbr = signup_phone_nb.value;
-  const username = signup_username.value;
-  const password = signup_password.value;
-  const email = signup_email.value;
-  const birthday = daySelect.options[daySelect.selectedIndex].value;
-  const birthmonth = monthSelect.options[monthSelect.selectedIndex].value;
-  const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
-  const joined_in_date = getTodayDate(); //as:  dd/mm/yy
-  const avatar_url = base64String ? base64String : "";
-
-  const add_user = async () => {
-    try {
-      const url = "http://localhost/twitter-clone/backend/signup.php";
-      const response = await fetch(url, {
-        method: "POST",
-        body: new URLSearchParams({
-          full_name,
-          email,
-          phone_nbr,
-          username,
-          password,
-          date_of_birth: `${birthday}/${birthmonth}/${birthyear}`,
-          joined_in_date,
-          avatar_url,
-        }),
-      });
-      const data = await response.json();
-      const user = {
-        full_name: full_name,
-        email: email,
-        phone_nbr: phone_nbr,
-        username: username,
-        password: password,
-        date_of_birth: `${birthday}/${birthmonth}/${birthyear}`,
-        joined_in_date: joined_in_date,
-        avatar_url: avatar_url,
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      checkCurrentUser(); //to redirect to home page if user added
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  add_user();
 };
 
 // add and manage data to signup-dropdowns (days-months-years)
@@ -193,11 +133,15 @@ const showLoginModal = () => {
   // there is no way to access login from signup page => no need to hide signup-modal hence it is already hidden
   login_modal.classList.remove("display-none");
 };
-// handle login form submit
-const loginUser = (e) => {
-  e.preventDefault();
-  const username = login_username.value;
-  const password = login_password.value;
+// handle login form submit //e is by default null if we called login after signup and same for ternary assigning
+const loginUser = (e = "") => {
+  if (e) e.preventDefault();
+  const username = login_username.value
+    ? login_username.value
+    : signup_username.value;
+  const password = login_password.value
+    ? login_password.value
+    : signup_password.value;
   const user_login = async () => {
     try {
       const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
@@ -211,6 +155,52 @@ const loginUser = (e) => {
     }
   };
   user_login();
+};
+
+// SIGN UP FUNCTIONS
+const showSignupModal = () => {
+  // make sure login-modal is hidden(add display-none) - hence we can go directly from login-modal to sign-up modal
+  login_modal.classList.add("display-none"); //note: it have no effect if class already exists
+  signup_modal.classList.remove("display-none");
+};
+// handle signup form submit
+const createNewUser = (e) => {
+  e.preventDefault();
+  const full_name = signup_full_name.value;
+  const phone_nbr = signup_phone_nb.value;
+  const username = signup_username.value;
+  const password = signup_password.value;
+  const email = signup_email.value;
+  const birthday = daySelect.options[daySelect.selectedIndex].value;
+  const birthmonth = monthSelect.options[monthSelect.selectedIndex].value;
+  const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
+  const joined_in_date = getTodayDate(); //as:  dd/mm/yy
+  const avatar_url = base64String ? base64String : "";
+
+  const add_user = async () => {
+    try {
+      const url = "http://localhost/twitter-clone/backend/signup.php";
+      const response = await fetch(url, {
+        method: "POST",
+        body: new URLSearchParams({
+          full_name,
+          email,
+          phone_nbr,
+          username,
+          password,
+          date_of_birth: `${birthday}/${birthmonth}/${birthyear}`,
+          joined_in_date,
+          avatar_url,
+        }),
+      });
+      const data = await response.json();
+      loginUser();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  add_user();
 };
 
 // SIGNUP EVENT LISTENERS

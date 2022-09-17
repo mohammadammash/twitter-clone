@@ -85,6 +85,7 @@ const addNewTweet = () => {
 // GET and Show Tweets
 const showTweets = () => {
   const user = JSON.parse(localStorage.getItem("user"))[0];
+  console.log(user.id);
 
   const addTweet_to_feed = (tweet) => {
     const dateDiff = timeDifference(tweet.created_datetime);
