@@ -56,14 +56,6 @@ function timeDifference(tweetDate) {
 const addTweet_to_feed = (tweet) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const dateDiff = timeDifference(tweet.created_datetime);
-  // then the tweet is posted locally
-  if (tweet.user_id === user.id) {
-    [tweet.avatar_url, tweet.tweet_user_name, tweet.tweet_name] = [
-      user.avatar_url,
-      user.username,
-      user.full_name,
-    ];
-  }
 
   const tweet_HTML = `
       <div class="tweet-object">
