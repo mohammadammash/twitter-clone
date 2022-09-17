@@ -9,11 +9,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="../styles/styles.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="../assets/twitter_logo.png"
-    />
+    <link rel="icon" type="image/x-icon" href="../assets/twitter_logo.png" />
   </head>
 
   <body class="home-page-body">
@@ -51,21 +47,26 @@
       <!-- user account info  -->
       <div class="account-info">
         <a href="">
-          <img class="pp" src="../assets/dummy-profile-pic.png" />
+          <img id="user_img" class="pp" src="../assets/dummy-profile-pic.png" />
           <div class="name-username">
-            <span class="name">Name</span>
-            <span class="username">@username</span>
-          </div>
-        </a>
+            <span id="name" class="name">Name</span>
+            <span id="username" class="username">@username</span>
+          </div> </a
+        >wor
       </div>
     </header>
     <!-- END navigation section, left nav bar -->
 
     <!-- START feed section -->
     <div class="feed-container">
-    <iframe class="feed" name='iframe' id="iframe"  src="./feed.html">
-      <!-- START feed content -->
-    </iframe>
+      <iframe
+        class="feed"
+        name="iframe"
+        id="iframe"
+        src="./feed.html"
+      >
+        <!-- START feed content -->
+      </iframe>
     </div>
     <!-- END feed section -->
 
@@ -102,5 +103,6 @@
     </section>
     <!-- END seach section (right) -->
 
+    <script src="../js/partials.js"></script>
   </body>
 </html>

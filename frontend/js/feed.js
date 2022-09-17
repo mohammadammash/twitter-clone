@@ -5,6 +5,14 @@ const newtweet_imgshow = document.getElementById("newtweet-imgshow");
 var base64String;
 const feed_content = document.getElementById("feed-content");
 
+// on window load => check if page is in frame or without parent location
+const checkIfPageIsInFrame = () => {
+  // The page is not in an iframe => redirect to /partials.html
+  if (window.location === window.parent.location)
+    window.location.href = "./partials.html";
+  // if the page is in an iframe continue normally
+};
+
 // show image and save url (didn't use arrow function => 'this' doen't work well inside)
 function uploadImage() {
   if (this.files && this.files[0]) {
@@ -88,7 +96,7 @@ const showTweets = () => {
             <p>${tweet.nb_of_likes}</p>
           </div>
         </div>
-      </div>`
+      </div>`;
     feed_content.innerHTML += tweet_HTML;
   };
   //fetch tweets from API, and send tweet to be created as html element
@@ -115,3 +123,5 @@ newtweet_imgurl.addEventListener("change", uploadImage);
 newtweet_submit.addEventListener("click", addNewTweet);
 // showing tweets of followed users when page loads:
 window.addEventListener("load", showTweets);
+// each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
+window.addEventListener("load", checkIfPageIsInFrame);
