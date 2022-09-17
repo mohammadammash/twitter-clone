@@ -10,7 +10,7 @@ $password = $_GET['password'];
 $hashedpass = hash('sha256', $password.'sayhitwitter');
 
 $query = $mysqli->prepare("SELECT id,full_name,email,phone_nbr,date_of_birth,username,bio,joined_in_date,avatar_url FROM users WHERE username=? and password=?");
-$query->bind_param('ss',$username,$hashedpass);
+$query->bind_param('ss',$username,$hashedpass);c
 $query->execute();
 $array = $query->get_result();
 
