@@ -1,181 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <script
+      src="https://kit.fontawesome.com/f95bd4b1c8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../styles/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile Page</title>
-  <script src="https://kit.fontawesome.com/f95bd4b1c8.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../styles/styles.css" />
-</head>
+  <body>
+    <div class="feed-contents flex">
+      <div class="feed-content">
+        <!-- Profile heading with left arrow -->
+        <div class="home-heading">
+          <div id="left-arrow" class="btn-imgicon arrow-left">
+            <img src="../assets/left-arrow.png" />
+          </div>
+          <span>Profile</span>
+        </div>
+        <!-- Banner div -->
+        <div id="banner-container" class="banner-container">
+          <!-- <img src="../assets/test_img.jpg"> -->
+        </div>
+        <!-- Profile pic inside banner -->
+        <div id="profile-picture" class="banner-pp-container"></div>
+        <!-- Left button (Edit profile) -->
+        <div class="edit-prof-btn">
+          <button id="edit-p">Edit profile</button>
+        </div>
+        <!-- Name and username -->
+        <div class="name-username-banner">
+          <a>
+            <p id="name-on-page" class="name">Name</p>
+          </a>
+          <a>
+            <p id="username" class="username">@username</p>
+          </a>
+        </div>
+        <!-- Bio -->
+        <div class="bio-banner">
+          <p id="bio-on-page">No Bio</p>
+        </div>
+        <!-- Joined date -->
+        <div class="joined-date-banner">
+          <i class="fa-solid fa-calendar-days"></i>
+          <p id="joined-at" class="username margin-left">Joined April 2024</p>
+        </div>
+        <!-- Followers, following count -->
+        <div class="follow-banner">
+          <p class="white semi-bold">122<span class="gray">Following</span></p>
+          <p class="white margin-left">
+            105.6M<span class="gray">Followers</span>
+          </p>
+        </div>
+        <!-- Tweets, MyTweets div -->
+        <div class="tweets-display-container">
+          <a id="all-tweets-btn">
+            <p>Tweets</p>
+          </a>
+          <a id="own-tweets-btn">
+            <p>MyTweets</p>
+          </a>
+        </div>
+        <div id="own-tweets" class="display-none"></div>
+        <div id="all-tweets"></div>
+      </div>
+    </div>
+    <!-- END feed content -->
 
-<body>
-  <div class="feed-contents flex">
-    <div class="feed-content">
-      <!-- Profile heading with left arrow -->
-      <div class="home-heading">
-        <div id="left-arrow" class="btn-imgicon arrow-left"><img src="../assets/left-arrow.png"></div>
-        <span>Profile</span>
-      </div>
-      <!-- Banner div -->
-      <div class="banner-container">
-        <!-- <img src="/assets/test_img.jpg"> -->
-      </div>
-      <!-- Profile pic inside banner -->
-      <div class="banner-pp-container">
-      </div>
-      <!-- Left button (Edit profile) -->
-      <div class="edit-prof-btn">
-        <button id="edit-p">Edit profile</button>
-      </div>
-      <!-- Name and username -->
-      <div class="name-username-banner">
-        <a>
-          <p id="name-on-page" class="name">Name</p>
-        </a>
-        <a>
-          <p class="username">@username</p>
-        </a>
-      </div>
-      <!-- Bio -->
-      <div class="bio-banner">
-        <p id="bio-on-page">Bio is here ... ... ... ... ... .. ... ... ... ... ...</p>
-      </div>
-      <!-- Joined date -->
-      <div class="joined-date-banner">
-        <i class="fa-solid fa-calendar-days"></i>
-        <p class="username margin-left">Joined April 2024</p>
-      </div>
-      <!-- Followers, following count -->
-      <div class="follow-banner">
-        <p class="white semi-bold">122<span class="gray">Following</span></p>
-        <p class="white margin-left">105.6M<span class="gray">Followers</span></p>
-      </div>
-      <!-- Tweets, MyTweets div -->
-      <div class="tweets-display-container">
-        <a>
-          <p>Tweets</p>
-        </a>
-        <a>
-          <p>MyTweets</p>
-        </a>
-      </div>
-      <!-- Testing, adding another tweet -->
-      <div class="tweet-object">
-        <img class="pp" src="../assets/dummy-profile-pic.png" />
-        <div class="tweet-obj-contents">
-          <div class="tweet-obj-writer">
-            <a href="" class="tweet-obj-name">Name
-              <span class="tweet-obj-username"> @username </span>
-              <span class="tweet-obj-time"> &#183;10h</span>
-            </a>
+    <!-- Start of Profile edit modal -->
+    <div class="modal-bg" id="modal-bg">
+      <div class="modal-profile">
+        <div class="model-title">
+          <div class="edit-pp-x">
+            <span id="close-edit-profile">X</span>
+            <p>Edit Profile</p>
           </div>
-          <div class="tweet-obj-text">
-            <p>
-              A Tweet, twitter , twittingTweet, twitter , twitting. Tweet,
-              twitter , twitting
-            </p>
-          </div>
-          <div class="tweet-obj-heart-likes">
-            <i class="fa-regular fa-heart"></i>
-            <p>100</p>
+          <div class="save-btn">
+            <button id="save-changes">Save</button>
           </div>
         </div>
-      </div>
-      <!-- Tweet containing an image -->
-      <div class="tweet-object">
-        <img class="pp" src="../assets/dummy-profile-pic.png" />
-        <div class="tweet-obj-contents">
-          <div class="tweet-obj-writer">
-            <a href="" class="tweet-obj-name">Name
-              <span class="tweet-obj-username"> @username </span>
-              <span class="tweet-obj-time"> &#183;10h</span>
-            </a>
-          </div>
-          <div class="tweet-obj-text">
-            <p>
-              A Tweet, twitter , twittingTweet, twitter , twitting. Tweet,
-              twitter , twitting
-            </p>
-          </div>
-          <div class="tweet-obj-img">
-            <img class="tweet-img" src="../assets/test_img.jpg" />
-          </div>
-          <div class="tweet-obj-heart-likes">
-            <i class="fa-regular fa-heart"></i>
-            <p>100</p>
+        <!-- Modify banner -->
+        <div id="profile-banner" class="banner-container center-items">
+          <div class="upload-cam-div">
+            <a> <input id="new-banner-pic" type="file" name="file" /> </a>
           </div>
         </div>
-      </div>
-      <!--Another Tweet containing an image -->
-      <div class="tweet-object">
-        <img class="pp" src="../assets/dummy-profile-pic.png" />
-        <div class="tweet-obj-contents">
-          <div class="tweet-obj-writer">
-            <a href="" class="tweet-obj-name">Name
-              <span class="tweet-obj-username"> @username </span>
-              <span class="tweet-obj-time"> &#183;10h</span>
-            </a>
+        <!-- Modify pp -->
+        <div id="profile-show" class="profile-pic-modal center-items pic-shrink">
+          <div class="upload-cam-div">
+            <a> <input id="new-profile-pic" type="file" name="file" /> </a>
           </div>
-          <div class="tweet-obj-text">
-            <p>
-              A Tweet, twitter , twittingTweet, twitter , twitting. Tweet,
-              twitter , twitting
-            </p>
-          </div>
-          <div class="tweet-obj-img">
-            <img class="tweet-img" src="../assets/test_img.jpg" />
-          </div>
-          <div class="tweet-obj-heart-likes">
-            <i class="fa-regular fa-heart"></i>
-            <p>100</p>
-          </div>
+        </div>
+        <!-- Modify Name -->
+        <div class="modal-inputs">
+          <label for="name">Name</label>
+          <input value="" id="edited-name" type="text" name="name" />
+          <!-- Modify Bio -->
+          <label for="bio">Bio</label>
+          <input value="" id="edited-bio" type="text" name="bio" />
         </div>
       </div>
     </div>
-  </div>
-  <!-- END feed content -->
-
-
-  <!-- !START Edit Profile Modal -->>
-  <div class="modal-bg" id="modal-bg">
-  <div class="modal-profile" >
-
-      <div class="model-title">
-        <div class="edit-pp-x">
-          <span id="close-edit-profile">X</span>
-          <p>Edit Profile</p>
-        </div>
-        <div class="save-btn">
-          <button id="save-changes">Save</button>
-        </div>
-      </div>
-      <!-- Modify banner -->
-      <div class="banner-container center-items">
-        <div class="upload-cam-div">
-          <a><i class="fa-solid fa-camera"></i></a>
-        </div>
-      </div>
-      <!-- Modify pp -->
-      <div class="profile-pic-modal center-items pic-shrink">
-        <div class="upload-cam-div">
-          <a><i class="fa-solid fa-camera"></i></a>
-        </div>
-      </div>
-      <!-- Modify Name -->
-      <div class="modal-inputs">
-        <label for="name">Name</label>
-        <input value="" id='edited-name' type="text" name="name">
-        <!-- Modify Bio -->
-        <label  for="bio">Bio</label>
-        <input value="" id="edited-bio" type="text" name="bio">
-      </div>
-    </div>
-  </div>
-  <!-- !END Edit Profile Modal -->
-
-  <script src="/frontend/js/editProfile.js"></script>
-</body>
-
+    <!-- !END Edit Profile Modal -->
+    <script src="../js/profile.js"></script>
+  </body>
 </html>

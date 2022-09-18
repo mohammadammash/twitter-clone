@@ -28,11 +28,14 @@ $username = $_POST['username'];
 $joined_in_date = $_POST['joined_in_date'];
 
 $avatar_url_base64 = $_POST['avatar_url'];
+if($avatar_url_base64){
 $image = base64_to_jpeg($avatar_url_base64, 'user_images/'.$username.'.jpeg');
 $target_Path = "/user_images";
 move_uploaded_file($image, $target_Path);
 $avatar_url = "../../backend/user_images/".$username.".jpeg";
-
+}else{
+    $avatar_url = '';
+}
 // intializing default values instead of null
 $bio = '';
 $banner = '';

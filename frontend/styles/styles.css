@@ -560,19 +560,18 @@ header {
   height: 100%;
   width: 100%;
 }
-
 .create-tweet {
   display: flex;
   width: 100%;
   min-height: 120px;
-  padding: 4px 20px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #71767b;
 }
 
 .create-tweet img,
 .tweet-object img {
   width: 55px;
   height: 55px;
-  cursor: pointer;
 }
 
 .whatshappening {
@@ -581,6 +580,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .btn-imgicon {
@@ -590,7 +590,6 @@ header {
   align-items: center;
   height: fit-content;
 }
-
 .whatshappening input {
   font-size: 18px;
   width: 100%;
@@ -600,7 +599,9 @@ header {
   outline: none;
   border: none;
 }
-
+input[type="file"]:hover{
+  cursor: pointer;
+}
 .btn-imgicon button {
   width: 75px;
   height: 35px;
@@ -669,7 +670,6 @@ header {
   width: 100%;
   padding: 12px 18px 0 16px;
   border-top: 1px solid #71767b;
-  cursor: pointer;
   height: fit-content;
 }
 
@@ -826,7 +826,6 @@ header {
   width: 125px;
   height: 125px;
   border-radius: 50%;
-  background-image: url("../assets/dummy-profile-pic.png");
   background-size: cover;
   margin-left: 16px;
   margin-top: -62.5px;
