@@ -619,6 +619,10 @@ header {
   height: 20px;
 }
 
+.img-icon-container>input{
+  display: none;
+}
+
 /* Recent tweets section */
 .fa-heart {
   color: #71767b;
