@@ -1,112 +1,114 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home / Twitter</title>
-    <script
-      src="https://kit.fontawesome.com/f95bd4b1c8.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="../styles/styles.css" />
-    <link rel="icon" type="image/x-icon" href="../assets/twitter_logo.png" />
-  </head>
 
-  <body class="home-page-body">
-    <!-- START navigation section, left nav bar -->
-    <header>
-      <!-- Navigation links  -->
-      <ul class="nav-left">
-        <li>
-          <i class="fa-brands fa-twitter fa-xl"></i>
-        </li>
-        <!-- Home nav button -->
-        <li>
-          <a href="./feed.html" target="iframe">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-          </a>
-        </li>
-        <!-- Profile nav button -->
-        <li>
-          <a href="./profile.html" target="iframe">
-            <i class="fa-regular fa-user"></i>
-            <span>Profile</span>
-          </a>
-        </li>
-        <!-- Logout nav button -->
-        <li>
-          <a href="../index.html" id="logout">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <span>Logout</span>
-          </a>
-        </li>
-        <!-- Tweet button -->
-        <button class="btn-lg home-tweet-btn">Tweet</button>
-      </ul>
-      <!-- user account info  -->
-      <div class="account-info">
-        <a href="">
-          <img id="user_img" class="pp" src="../assets/dummy-profile-pic.png" />
-          <div class="name-username">
-            <span id="name" class="name">Name</span>
-            <span id="username" class="username">@username</span>
-          </div> </a
-        >wor
-      </div>
-    </header>
-    <!-- END navigation section, left nav bar -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home / Twitter</title>
+  <script src="https://kit.fontawesome.com/f95bd4b1c8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../styles/styles.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/twitter_logo.png" />
+</head>
 
-    <!-- START feed section -->
-    <div class="feed-container">
-      <iframe
-        class="feed"
-        name="iframe"
-        id="iframe"
-        src="./feed.html"
-      >
-        <!-- START feed content -->
-      </iframe>
-    </div>
-    <!-- END feed section -->
-
-    <!-- START seach section (right) -->
-    <section class="search-section">
-      <!-- search bar -->
-      <div class="search-bar">
-        <input style="display:block;" id='search-text' type="text" placeholder="Search Twitter" />
-      </div>  
-      <div id="search-content" class="search-content">
+<body class="home-page-body">
+  <!-- START navigation section, left nav bar -->
+  <header>
+    <!-- Navigation links  -->
+    <ul class="nav-left">
+      <li>
+        <i class="fa-brands fa-twitter fa-xl"></i>
+      </li>
+      <!-- Home nav button -->
+      <li>
+        <a href="./feed.html" target="iframe">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <!-- Profile nav button -->
+      <li>
+        <a href="./profile.html" target="iframe">
+          <i class="fa-regular fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <!-- Logout nav button -->
+      <li>
+        <a href="../index.html" id="logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+      <!-- Tweet button -->
+      <button class="btn-lg home-tweet-btn">Tweet</button>
+    </ul>
+    <!-- user account info  -->
+    <div class="account-info">
+      <a href="">
+        <img id="user_img" class="pp" src="../assets/dummy-profile-pic.png" />
+        <div class="name-username">
+          <span id="name" class="name">Name</span>
+          <span id="username" class="username">@username</span>
         </div>
+      </a>wor
+    </div>
+  </header>
+  <!-- END navigation section, left nav bar -->
 
-      </div>
-      <!-- Terms of conditions -->
-      <div class="termsofcond">
-        <ul class="terms-links">
-          <a href="#">
-            <li>Terms of Service</li>
-          </a>
-          <a href="#">
-            <li>Privacy Policy</li>
-          </a>
-          <a href="#">
-            <li>Cookie Policy</li>
-          </a>
-          <a href="#">
-            <li>Accessibility</li>
-          </a>
-          <a href="#">
-            <li>Ads info</li>
-          </a>
-          <a href="#">
-            <li>More ...</li>
-          </a>
-        </ul>
-        <p>© 2022 Twitter, Inc.</p>
-      </div>
-    </section>
-    <!-- END seach section (right) -->
+  <!-- START feed section -->
+  <div class="feed-container">
+    <iframe class="feed" name="iframe" id="iframe" src="./feed.html">
+      <!-- START feed content -->
+    </iframe>
+  </div>
+  <!-- END feed section -->
 
-    <script src="../js/partials.js"></script>
-  </body>
+  <!-- START seach section (right) -->
+  <section class="search-section">
+    <!-- search bar -->
+    <div class="search-bar">
+      <input style="display:block;" id='search-text' type="text" placeholder="Search Twitter" />
+    </div>
+    <div id="search-content" class="search-content">
+    </div>
+
+    </div>
+    <!-- Terms of conditions -->
+    <div class="termsofcond">
+      <ul class="terms-links">
+        <a href="#">
+          <li>Terms of Service</li>
+        </a>
+        <a href="#">
+          <li>Privacy Policy</li>
+        </a>
+        <a href="#">
+          <li>Cookie Policy</li>
+        </a>
+        <a href="#">
+          <li>Accessibility</li>
+        </a>
+        <a href="#">
+          <li>Ads info</li>
+        </a>
+        <a href="#">
+          <li>More ...</li>
+        </a>
+      </ul>
+      <p>© 2022 Twitter, Inc.</p>
+    </div>
+  </section>
+  <!-- END seach section (right) -->
+
+  <!--START Mobile nav bar -->
+  <div class="mobile-nav-bar">
+    <a href="./feed.html"><i class="fa-solid fa-house"></i></a>
+    <a href="./profile.html"><i class="fa-regular fa-user"></i></a>
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <!--END Mobile nav bar -->
+  </div>
+
+  <script src="../js/partials.js"></script>
+</body>
+
 </html>
