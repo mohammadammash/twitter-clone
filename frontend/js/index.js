@@ -3,6 +3,7 @@ const login_modal = document.getElementById("login-modal");
 const login_submit_btn = document.getElementById("login-submit");
 const login_show_btn = document.getElementById("login-show");
 const close_login = document.getElementById("close-login");
+const unrecognized_login = document.getElementById("unrecognized-login");
 // login-inputs
 const login_username = document.getElementById("login-username");
 const login_password = document.getElementById("login-password");
@@ -146,6 +147,7 @@ const validateLogin = (username, password) => {
 const showLoginModal = () => {
   // there is no way to access login from signup page => no need to hide signup-modal hence it is already hidden
   login_modal.classList.remove("display-none");
+  unrecognized_login.classList.add("display-none");
 };
 // handle login form submit //e is by default null if we called login after signup and same for ternary assigning
 const loginUser = (e = "") => {
@@ -167,8 +169,11 @@ const loginUser = (e = "") => {
       if (data[0]) {
         localStorage.setItem("user", JSON.stringify(data[0]));
         checkCurrentUser(); //to redirect to home page if user added
+      } else {
+        //if user not found!
+        unrecognized_login.classList.remove("display-none");
       }
-      } catch (err) {
+    } catch (err) {
       console.log(err);
     }
   };

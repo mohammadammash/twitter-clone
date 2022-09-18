@@ -299,7 +299,11 @@ body {
   justify-content: center;
   align-items: flex-end;
 }
-
+.modal .login-error{
+  text-align: center;
+  margin-top: 8px;
+  color:rgb(222, 2, 2);
+}
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #71767b;
