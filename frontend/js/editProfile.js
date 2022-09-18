@@ -8,14 +8,24 @@ const edited_bio = document.getElementById('edited-bio');//bio
 const name_on_page = document.getElementById('name-on-page');
 const bio_on_page = document.getElementById('bio-on-page');
 const left_arrow = document.getElementById('left-arrow');
-
+const profile_picture = document.getElementById('profile-picture');
+const username = document.getElementById('username');
+const joined_at = document.getElementById('joined-at');
 
 //to redirect to feed page if left arrow is clicked
 left_arrow.addEventListener('click', function () {
     window.location.href = "./feed.html";
 })
 
-
+//load profile
+const loadProfile = ()=>{
+    const user = JSON.parse(localStorage.getItem('user'));
+    profile_picture.style.backgroundImage = `url(${user.avatar_url})`;
+    if(user.bio) bio_on_page.textContent = user.bio;
+    name_on_page.textContent = user.full_name; 
+    username.textContent = user.username;
+    joined_at.textContent = user.joined_in_date;
+}
 
 // On window load => check if page is in frame or without parent location
 const checkIfPageIsInFrame = () => {
@@ -55,7 +65,7 @@ const changeInputValue = async () => {
     }
 };
 
-changeInputValue();
+// changeInputValue();
 
 
 //A function that gets user info from input fields and update the db accordingly
@@ -111,4 +121,4 @@ save_changes.addEventListener("click", getNameBioFrInput);
 
 // each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
 window.addEventListener("load", checkIfPageIsInFrame);
-
+window.addEventListener('load',loadProfile);

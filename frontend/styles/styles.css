@@ -802,7 +802,6 @@ header {
   width: 125px;
   height: 125px;
   border-radius: 50%;
-  background-image: url("../assets/dummy-profile-pic.png");
   background-size: cover;
   margin-left: 16px;
   margin-top: -62.5px;
