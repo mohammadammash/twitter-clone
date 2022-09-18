@@ -5,6 +5,8 @@ const newtweet_imgshow = document.getElementById("newtweet-imgshow");
 var base64String;
 const feed_content = document.getElementById("feed-content");
 const tweet_profile = document.getElementById("profile-tweet");
+//all tweets:
+const all_tweets = document.getElementsByClassName("tweet-obj-heart-likes");
 
 // on window load => add user profile to header tweet:
 const checkUserProfile = () => {
@@ -92,6 +94,7 @@ const addTweet_to_feed = (tweet) => {
   tweet_HTML += `<div class="tweet-obj-heart-likes">
             <i class="fa-regular fa-heart"></i>
             <p>${tweet.nb_of_likes}</p>
+            <input type="hidden" value='${tweet.tweet_id}'/>
           </div>
         </div>
       </div>`;
@@ -174,3 +177,6 @@ window.addEventListener("load", showTweets);
 window.addEventListener("load", checkIfPageIsInFrame);
 //check the user to ad his profile picture in his tweet(first row)
 window.addEventListener("load", checkUserProfile);
+
+// loop of all tweets to catch the press on heart(like) button
+for(let tweet of all_tweets) tweet.addEventListener('click',()=>{console.log('ah')})
