@@ -2,7 +2,7 @@
 const modalBtn = document.getElementById('edit-p');
 const modalBg = document.getElementById('modal-bg');
 const modalClose = document.getElementById('close-edit-profile');
-const save_changes=document.getElementById('save-changes');
+const save_changes = document.getElementById('save-changes');
 const edited_name = document.getElementById('edited-name');//name
 const edited_bio = document.getElementById('edited-bio');//bio
 // console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
@@ -27,10 +27,9 @@ modalClose.addEventListener('click', function () {
 
 //A function that retrieves user info from db and displays them in the input fields of the modal
 //!document.getElementById("nameofid").value = "My value";
-// let changeInputValue = (e) =>{
 
 
-// }
+
 
 
 
