@@ -5,7 +5,7 @@ const modalClose = document.getElementById('close-edit-profile');
 const save_changes=document.getElementById('save-changes');
 const edited_name = document.getElementById('edited-name');//name
 const edited_bio = document.getElementById('edited-bio');//bio
-console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
+// console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
 
 
 // On window load => check if page is in frame or without parent location
@@ -24,8 +24,18 @@ modalClose.addEventListener('click', function () {
     modalBg.classList.remove('bg-active');
 })
 
-//!----------------------------------------------------------------------------------
-//TODO when save is clicked
+
+//A function that retrieves user info from db and displays them in the input fields of the modal
+//!document.getElementById("nameofid").value = "My value";
+// let changeInputValue = (e) =>{
+
+
+// }
+
+
+
+
+//A function that gets user info from input fields and update the db accordingly
 let getNameBioFrInput = (e) => {
     e.preventDefault();
     const full_name = edited_name.value;
@@ -37,7 +47,7 @@ let getNameBioFrInput = (e) => {
     console.log("bio");
     console.log(bio);
     const user_id = 1;
-    //to change user_id = 1, to the below syntax since user's info is not showing on my device
+    //to change user_id = 1, to the below syntax since user's info is not showing on my device's local storage
     // const user = JSON.parse(localStorage.getItem("user"));
     // console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
 
@@ -64,8 +74,6 @@ let getNameBioFrInput = (e) => {
     update_db();
 
 };
-
-
 
 save_changes.addEventListener("click", getNameBioFrInput);
 
