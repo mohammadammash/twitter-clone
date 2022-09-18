@@ -168,7 +168,7 @@ const loginUser = (e = "") => {
       // add user as currentUser
       if (data[0]) {
         localStorage.setItem("user", JSON.stringify(data[0]));
-        checkCurrentUser(); //to redirect to home page if user added
+        // checkCurrentUser(); //to redirect to home page if user added
       } else {
         //if user not found!
         unrecognized_login.classList.remove("display-none");
@@ -307,7 +307,7 @@ close_login.addEventListener("click", () =>
 signup_img_url.addEventListener("change", uploadImage);
 
 // local Storage - check when loading if there is a user
-window.addEventListener("load", checkCurrentUser);
+// window.addEventListener("load", checkCurrentUser);
 
 // DATE-OF-BIRTH DROPDOWNS:
 // check data of dropdowns on change
