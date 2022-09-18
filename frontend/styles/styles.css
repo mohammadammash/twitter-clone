@@ -1127,3 +1127,42 @@ header {
   }
 }
 
+/*media queries for index.html */
+@media only screen and (max-width:1000px){
+
+.main{
+  display: flex;
+  flex-direction:column-reverse;
+}
+
+.section1{
+  width: 100%;
+}
+
+.section2{
+  font-size:40px;
+}
+
+.main-logo{
+  width:70%;
+}
+
+.section2 .signup-index>.title1{
+  font-size:50px;
+}
+
+.btn-lg, .btn-trans{
+width:250px;
+}
+
+.section2 .end>.terms{
+  font-size: 9px;
+  border:1px solid blue;
+  width: 70vw;
+}
+.end{
+  width:100%;
+  border:1px solid red;
+}
+
+}
