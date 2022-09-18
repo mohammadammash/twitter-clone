@@ -28,6 +28,36 @@ modalClose.addEventListener('click', function () {
 //A function that retrieves user info from db and displays them in the input fields of the modal
 //!document.getElementById("nameofid").value = "My value";
 
+    //to change user_id = 1, to the below syntax since user's info is not showing on my device's local storage
+    // const user = JSON.parse(localStorage.getItem("user"));
+
+    const changeInputValue = async () => {
+        try {
+            // const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=${user.id}`;
+            const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=1`;
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data);
+            const original_name=data[0].full_name;
+            console.log(original_name);
+            const original_bio=data[0].bio;
+            console.log(original_bio);
+            const original_pp=data[0].banner;
+            console.log(original_pp);
+            const original_banner=data[0].avatar_url;
+            console.log(original_banner);
+
+            document.getElementById("edited-name").value = original_name;
+            document.getElementById("edited-bio").value = original_bio;
+
+
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    changeInputValue();
+
 
 
 
