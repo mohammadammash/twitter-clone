@@ -73,7 +73,7 @@ function timeDifference(tweetDate) {
 
 // append tweet to html:
 const createTweet = (tweet, user) => {
-  const tweet_HTML = `
+  let tweet_HTML = `
     <div class="tweet-object">
         <img class="pp" src="${user.avatar_url}" />
         <div class="tweet-obj-contents">
@@ -90,10 +90,12 @@ const createTweet = (tweet, user) => {
               ${tweet.text}
             </p>
           </div>`;
-  //   <div class="tweet-obj-img">
-  //     <img class="tweet-img" src="${tweet.image_url}" alt=''/>
-  //   </div>
-  tweet`<div class="tweet-obj-heart-likes">
+  if (tweet.image_url) {
+    tweet_HTML += `<div class="tweet-obj-img">
+      <img class="tweet-img" src="${tweet.image_url}" alt=''/>
+    </div>`;
+  }
+  tweet_HTML += `<div class="tweet-obj-heart-likes">
             <i class="fa-regular fa-heart"></i>
             <p>${tweet.nb_of_likes}</p>
           </div>

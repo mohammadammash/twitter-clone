@@ -25,11 +25,14 @@ $user_id = $_POST['user_id'];
 $nb_of_likes = $_POST['nb_of_likes'];
 
 $image_url_base64 = $_POST['image_url'];
+if($image_url_base64){
 $image = base64_to_jpeg($image_url_base64, 'tweets_images/' . $user_id.$created_datetime.'.jpeg');
 $target_Path = "/tweets_images";
 move_uploaded_file($image, $target_Path);
 $image_url = "../../backend/tweets_images/" . $user_id . $created_datetime . ".jpeg";
-
+}else{
+    $image_url = '';
+}
 $query = $mysqli->prepare("INSERT INTO tweets(text, image_url, created_datetime, user_id, nb_of_likes) VALUE (?,?,?,?,?)");
 $query->bind_param('sssss', $text, $image_url, $created_datetime, $user_id, $nb_of_likes); //change to ?,? to strings vars
 $query->execute();
