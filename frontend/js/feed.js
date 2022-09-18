@@ -4,6 +4,13 @@ const newtweet_submit = document.getElementById("newtweet-submit");
 const newtweet_imgshow = document.getElementById("newtweet-imgshow");
 var base64String;
 const feed_content = document.getElementById("feed-content");
+const tweet_profile = document.getElementById('profile-tweet');
+
+// on window load => add user profile to header tweet:
+const checkUserProfile = ()=>{
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (user.avatar_url) tweet_profile.src= user.avatar_url;
+}
 
 // on window load => check if page is in frame or without parent location
 const checkIfPageIsInFrame = () => {
@@ -56,6 +63,7 @@ function timeDifference(tweetDate) {
 const addTweet_to_feed = (tweet) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const dateDiff = timeDifference(tweet.created_datetime);
+  if(!tweet.avatar_url) tweet.avatar_url = '../assets/dummy-profile-pic.png'; 
 
   const tweet_HTML = `
       <div class="tweet-object">
@@ -162,3 +170,5 @@ newtweet_submit.addEventListener("click", addNewTweet);
 window.addEventListener("load", showTweets);
 // each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
 window.addEventListener("load", checkIfPageIsInFrame);
+//check the user to ad his profile picture in his tweet(first row)
+window.addEventListener("load", checkUserProfile);

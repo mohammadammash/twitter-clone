@@ -9,6 +9,8 @@ const logout_btn = document.getElementById('logout');
 
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {
+  if(!user.avatar_url) user.avatar_url = '../assets/dummy-profile-pic.png';
+  
   const user_HTML = `
       <div class="tweet-object img">
         <img class="pp" src="${user.avatar_url}" />
@@ -48,7 +50,7 @@ const checkCurrentUser = () => {
   let user = localStorage.getItem("user");
   if (user) {
     user = JSON.parse(user);
-    console.log(user);
+    if(!user.avatar_url) user.avatar_url = '../assets/dummy-profile-pic.png';
     [user_img.src, full_name.textContent, username.textContent] = [
       user.avatar_url,
       user.full_name,
