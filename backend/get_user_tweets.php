@@ -9,10 +9,10 @@ if (isset($_GET["user_id"])) {
     $userid = $_GET['user_id'];
 
     $sql_query = "
-    SELECT tweets.id as tweet_id, tweets.text as tweet_text, tweets.image_url as tweet_img_url, tweets.created_datetime as tweet_date_time , tweets.nb_of_likes as tweet_nb_of_likes
-    FROM users,tweets
-    WHERE tweets.user_id=users.id AND users.id=$userid";
-    
+    SELECT tweets.id, tweets.text, tweets.image_url, tweets.created_datetime, tweets.nb_of_likes
+    FROM tweets
+    WHERE tweets.user_id=$userid";
+
     $query = $mysqli->prepare($sql_query);
     $query->execute();
     $array = $query->get_result();
@@ -25,5 +25,4 @@ if (isset($_GET["user_id"])) {
 
     $json = json_encode($response);
     echo $json;
-
 }
