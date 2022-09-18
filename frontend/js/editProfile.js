@@ -71,14 +71,14 @@ function timeDifference(tweetDate) {
   return `${Math.floor(sec)}s`;
 }
 
-// append tweet to html:
+// append user tweets to html:
 const createTweet = (tweet, user) => {
   let tweet_HTML = `
     <div class="tweet-object">
         <img class="pp" src="${user.avatar_url}" />
         <div class="tweet-obj-contents">
           <div class="tweet-obj-writer">
-            <a href="" class="tweet-obj-name">Name
+            <a href="" class="tweet-obj-name">${user.full_name}
               <span class="tweet-obj-username"> ${user.username} </span>
               <span class="tweet-obj-time"> ${timeDifference(
                 tweet.created_datetime
@@ -105,6 +105,40 @@ const createTweet = (tweet, user) => {
   own_tweets_content.innerHTML += tweet_HTML;
 };
 
+// append the followed tweets in allTweets:
+const createFollowedTweets = (tweet) => {
+  let tweet_HTML = `
+    <div class="tweet-object">
+        <img class="pp" src="${tweet.avatar_url}" />
+        <div class="tweet-obj-contents">
+          <div class="tweet-obj-writer">
+            <a href="" class="tweet-obj-name">${tweet.tweet_user_name}
+              <span class="tweet-obj-username"> ${tweet.tweet_username} </span>
+              <span class="tweet-obj-time"> ${timeDifference(
+                tweet.created_datetime
+              )}</span>
+            </a>
+          </div>
+          <div class="tweet-obj-text">
+            <p>
+              ${tweet.tweet_text}
+            </p>
+          </div>`;
+  if (tweet.tweet_img) {
+    tweet_HTML += `<div class="tweet-obj-img">
+      <img class="tweet-img" src="${tweet.tweet_img}" alt=''/>
+    </div>`;
+  }
+  tweet_HTML += `<div class="tweet-obj-heart-likes">
+            <i class="fa-regular fa-heart"></i>
+            <p>${tweet.nb_of_likes}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  all_tweets_content.innerHTML += tweet_HTML;
+};
+
 const loadUserTweets = async () => {
   try {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -116,6 +150,13 @@ const loadUserTweets = async () => {
     }
   } catch (err) {
     console.log(err);
+  }
+};
+
+const laodFollowedTweets = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  for (let tweet of user.tweets) {
+    createFollowedTweets(tweet);
   }
 };
 
@@ -188,3 +229,4 @@ save_changes.addEventListener("click", getNameBioFrInput);
 window.addEventListener("load", checkIfPageIsInFrame);
 window.addEventListener("load", loadProfile);
 window.addEventListener("load", loadUserTweets);
+window.addEventListener("load", laodFollowedTweets);
