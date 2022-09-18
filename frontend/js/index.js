@@ -4,8 +4,6 @@ const login_submit_btn = document.getElementById("login-submit");
 const login_show_btn = document.getElementById("login-show");
 const close_login = document.getElementById("close-login");
 const unrecognized_login = document.getElementById("unrecognized-login");
-//!to remove
-localStorage.setItem("user",22);
 // login-inputs
 const login_username = document.getElementById("login-username");
 const login_password = document.getElementById("login-password");
