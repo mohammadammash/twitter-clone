@@ -6,6 +6,11 @@ const username = document.getElementById("username");
 const search_bar = document.getElementById("search-text");
 const search_content = document.getElementById("search-content");
 const logout_btn = document.getElementById("logout");
+// search btn mobile:
+const mobile_search_btn = document.getElementById("search-btn-mobile");
+const search_section = document.getElementById("search-section");
+// iframe to hide
+const main_iframe = document.getElementById("main-iframe");
 
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {
@@ -69,9 +74,28 @@ const logUserOut = () => {
   localStorage.clear();
 };
 
+// show search content in mobile:
+const showSearch_Mobile = () => {
+  search_section.classList.add("show-search");
+  main_iframe.classList.add("display-none");
+};
+
+// show sections hidden after getting back to desktop size from mobile design
+const showSections = () => {
+  if (window.innerWidth > 1100) {
+    console.log("heyoooo");
+    search_section.classList.remove("show-search");
+    main_iframe.classList.remove("display-none");
+  }
+};
+
 // check if there is a user(redirected from home/index) or if anyone tried to visit this page directly from URL
 window.addEventListener("load", checkCurrentUser);
 // listen to any change in search bar text immediately!:
 search_bar.addEventListener("input", getUsers);
 // logout:
 logout_btn.addEventListener("click", logUserOut);
+// when mobile search btn is clicked
+mobile_search_btn.addEventListener("click", showSearch_Mobile);
+// reshow all hidden pages, in '/frontend/show/partials.html' when screen reachs specific width:
+window.addEventListener("resize", showSections);
