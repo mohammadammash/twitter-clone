@@ -5,26 +5,23 @@ const username = document.getElementById("username");
 // to handle search_query_text and content to show(users) below it
 const search_bar = document.getElementById("search-text");
 const search_content = document.getElementById("search-content");
-// logout
 const logout_btn = document.getElementById('logout');
 
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {
   const user_HTML = `
-      <div class="tweet-object">
+      <div class="tweet-object img">
         <img class="pp" src="${user.avatar_url}" />
-        <div class="tweet-obj-contents">
           <div class="tweet-obj-writer">
-            <a href="" class="tweet-obj-name">
+            <a href="" class="tweet-obj-name name">
               ${user.full_name}
-              <span class="tweet-obj-username"> @${user.username} </span>
+              <span class="tweet-obj-username username"> @${user.username} </span>
                 <span id='user_id' class="display-none"> ${user.id}</span>
             </a>
           </div>
           <div class="tweet-obj-text">
             <p>${user.bio}</p>
           </div>
-        </div>
       </div>`;
   search_content.innerHTML += user_HTML;
 };

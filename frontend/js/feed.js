@@ -66,7 +66,7 @@ const addTweet_to_feed = (tweet) => {
               ${tweet.tweet_user_name}
               <span class="tweet-obj-username"> @${tweet.tweet_username} </span>
               <span class="tweet-obj-time">
-                &#183${dateDiff}
+                &#183 ${dateDiff}
               </span>
               <span id='tweet_user_id' class="display-none">
                 &#183${tweet.tweet_user_id}

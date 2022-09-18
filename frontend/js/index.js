@@ -3,6 +3,7 @@ const login_modal = document.getElementById("login-modal");
 const login_submit_btn = document.getElementById("login-submit");
 const login_show_btn = document.getElementById("login-show");
 const close_login = document.getElementById("close-login");
+const unrecognized_login = document.getElementById("unrecognized-login");
 // login-inputs
 const login_username = document.getElementById("login-username");
 const login_password = document.getElementById("login-password");
@@ -129,9 +130,24 @@ function populateYears() {
 }
 
 // LOGIN FUNCTIONS
+const validateLogin = (username, password) => {
+  login_username.classList.remove("danger");
+  login_password.classList.remove("danger");
+
+  if (!username || username.length < 6) {
+    login_username.classList.add("danger");
+    return false;
+  } else if (!password) {
+    login_password.classList.add("danger");
+    return false;
+  }
+  return true;
+};
+
 const showLoginModal = () => {
   // there is no way to access login from signup page => no need to hide signup-modal hence it is already hidden
   login_modal.classList.remove("display-none");
+  unrecognized_login.classList.add("display-none");
 };
 // handle login form submit //e is by default null if we called login after signup and same for ternary assigning
 const loginUser = (e = "") => {
@@ -143,22 +159,92 @@ const loginUser = (e = "") => {
   else username = login_username.value;
   if (signup_password.value) password = signup_password.value;
   else password = login_password.value;
+  if (!validateLogin(username, password)) return;
   const user_login = async () => {
     try {
       const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
       const response = await fetch(url);
       const data = await response.json();
       // add user as currentUser
-      localStorage.setItem("user", JSON.stringify(data[0]));
-      checkCurrentUser(); //to redirect to home page if user added
+      if (data[0]) {
+        localStorage.setItem("user", JSON.stringify(data[0]));
+        checkCurrentUser(); //to redirect to home page if user added
+      } else {
+        //if user not found!
+        unrecognized_login.classList.remove("display-none");
+      }
     } catch (err) {
       console.log(err);
     }
   };
   user_login();
 };
-
 // SIGN UP FUNCTIONS
+//validation:
+const validateSignUp = (full_name, username, password, email, phone_nbr) => {
+  // reset inputs first:
+  signup_full_name.classList.remove("danger");
+  signup_username.classList.remove("danger");
+  signup_password.classList.remove("danger");
+  signup_email.classList.remove("danger");
+  signup_phone_nb.classList.remove("danger");
+
+  const validEmail = () => {
+    const regEx = /[a-z0-9_\.-]{3,}@[a-z0-9_\.-]{5,}/;
+    return regEx.test(email);
+  };
+  const validPhonenb = () => {
+    if (phone_nbr.length < 11) return false;
+    const keyNbs = phone_nbr.slice(4, 6);
+    const countrycode = phone_nbr.slice(0, 4);
+    let valid = false;
+    if (countrycode == "+961") {
+      if (phone_nbr.slice(4, 5) == "3" && phone_nbr.slice(5).length == "6")
+        valid = true;
+      else if (
+        (keyNbs == "71" || keyNbs == "70" || keyNbs == "76") &&
+        phone_nbr.slice(6).length == "6"
+      )
+        valid = true;
+    }
+    return valid;
+  };
+  const validUsername = () => {
+    // Usernames can only use letters, numbers, underscores, and periods.
+    const usernameRegex = /[a-z0-9_.]{6,}/;
+    return usernameRegex.test(username);
+  };
+  const validPassword = () => {
+    const regEx =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
+    return regEx.test(password);
+  };
+
+  let valid = true;
+  if (full_name.length < 8) {
+    signup_full_name.classList.add("danger");
+    valid = false;
+  }
+  if (!validEmail()) {
+    signup_email.classList.add("danger");
+    valid = false;
+  }
+  if (!validPhonenb()) {
+    signup_phone_nb.classList.add("danger");
+    valid = false;
+  }
+  if (!validUsername()) {
+    signup_username.classList.add("danger");
+    valid = false;
+  }
+  if (!validPassword()) {
+    signup_password.classList.add("danger");
+    valid = false;
+  }
+
+  return valid;
+};
+
 const showSignupModal = () => {
   // make sure login-modal is hidden(add display-none) - hence we can go directly from login-modal to sign-up modal
   login_modal.classList.add("display-none"); //note: it have no effect if class already exists
@@ -177,6 +263,7 @@ const createNewUser = (e) => {
   const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
   const joined_in_date = getTodayDate(); //as:  dd/mm/yy
   const avatar_url = base64String ? base64String : "";
+  if (!validateSignUp(full_name, username, password, email, phone_nbr)) return;
 
   const add_user = async () => {
     try {

@@ -30,7 +30,6 @@ iframe {
   border: none;
 }
 
-
 /* UTILITIES */
 .btn {
   width: 300px;
@@ -254,7 +253,7 @@ body {
   margin: 15px 0;
   padding: 5px;
   background-color: transparent;
-  color: #e7e9ea;
+  color: #71767b;
 }
 
 .signup-footer .img-section {
@@ -300,12 +299,20 @@ body {
   justify-content: center;
   align-items: flex-end;
 }
-
+.modal .login-error{
+  text-align: center;
+  margin-top: 8px;
+  color:rgb(222, 2, 2);
+}
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #71767b;
   opacity: 1;
+  font-size: 15px;
   /* Firefox */
+}
+.pass-input::placeholder{
+  font-size:12px;
 }
 
 /* End of Login Modal */
@@ -417,6 +424,9 @@ header {
   justify-content: space-between;
   padding: 10px 0 10px 13%;
 }
+.nav-left{
+  padding-top: 20px;
+}
 
 .nav-left li {
   width: 100%;
@@ -447,16 +457,17 @@ header {
   cursor: pointer;
   border: none;
 }
-
+.danger{border:2px solid rgb(222, 2, 2);}
 .home-tweet-btn:hover {
   opacity: 0.8;
 }
-
 /* User Profile info at the bottom of the left nav menu*/
 .account-info {
   width: 100%;
   height: 30%;
   padding-top: 185px;
+  margin-bottom: 20px;
+
 }
 
 .account-info a {
@@ -668,6 +679,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .search-bar {
@@ -692,6 +704,19 @@ header {
   font-weight: 450;
   border-radius: 9999px;
 }
+.search-content{
+  height:80%;
+}
+.search-content .name{
+  font-size:16px;
+  margin-left: 5px;
+}
+.search-content .username{
+  font-size:14px;
+}
+.search-content img{
+  margin-bottom: 11px;
+}
 
 /* terms of cond styling */
 .termsofcond {
@@ -703,6 +728,7 @@ header {
   max-width: 355px;
   flex-direction: column;
   font-size: 12px;
+  margin-bottom: 20px;
 }
 
 .terms-links li {
