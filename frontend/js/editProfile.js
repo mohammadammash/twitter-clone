@@ -42,7 +42,7 @@ modalClose.addEventListener('click', function () {
 const changeInputValue = async () => {
     try {
         // const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=${user.id}`;
-        const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=1`;
+        const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=101`;
         const response = await fetch(url);
         const data = await response.json();
         const original_name = data[0].full_name;
@@ -116,12 +116,13 @@ let getNameBioFrInput = (e) => {
     }
 
     update_page_info();
+    modalBg.classList.remove('bg-active');
 
 };
 
 save_changes.addEventListener("click", getNameBioFrInput);
 
-//!-------------DONE WITH MODAL'S SECTION---------------------------------------------------------------------
+//!------------------------DONE WITH MODAL'S SECTION---------------------------------------------------------------------
 
 
 
