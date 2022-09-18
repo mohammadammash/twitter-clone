@@ -4,13 +4,13 @@ const newtweet_submit = document.getElementById("newtweet-submit");
 const newtweet_imgshow = document.getElementById("newtweet-imgshow");
 var base64String;
 const feed_content = document.getElementById("feed-content");
-const tweet_profile = document.getElementById('profile-tweet');
+const tweet_profile = document.getElementById("profile-tweet");
 
 // on window load => add user profile to header tweet:
-const checkUserProfile = ()=>{
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (user.avatar_url) tweet_profile.src= user.avatar_url;
-}
+const checkUserProfile = () => {
+  let user = JSON.parse(localStorage.getItem("user"));
+  if (user.avatar_url) tweet_profile.src = user.avatar_url;
+};
 
 // on window load => check if page is in frame or without parent location
 const checkIfPageIsInFrame = () => {
@@ -63,14 +63,14 @@ function timeDifference(tweetDate) {
 const addTweet_to_feed = (tweet) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const dateDiff = timeDifference(tweet.created_datetime);
-  if(!tweet.avatar_url) tweet.avatar_url = '../assets/dummy-profile-pic.png'; 
+  if (!tweet.avatar_url) tweet.avatar_url = "../assets/dummy-profile-pic.png";
 
-  const tweet_HTML = `
+  let tweet_HTML = `
       <div class="tweet-object">
         <img class="pp" src="${tweet.avatar_url}" />
         <div class="tweet-obj-contents">
           <div class="tweet-obj-writer">
-            <a href="" class="tweet-obj-name">
+            <div href="" class="tweet-obj-name">
               ${tweet.tweet_user_name}
               <span class="tweet-obj-username"> @${tweet.tweet_username} </span>
               <span class="tweet-obj-time">
@@ -79,15 +79,17 @@ const addTweet_to_feed = (tweet) => {
               <span id='tweet_user_id' class="display-none">
                 &#183${tweet.tweet_user_id}
               </span>
-            </a>
+            </div>
           </div>
           <div class="tweet-obj-text">
             <p>${tweet.tweet_text}</p>
-          </div>
-          <div class="tweet-obj-img">
-            <img class="tweet-img" src="${tweet.tweet_img}" />
-          </div>
-          <div class="tweet-obj-heart-likes">
+          </div>`;
+  if (tweet.tweet_img) {
+    tweet_HTML += `<div class="tweet-obj-img">
+            <img class="tweet-img" src="${tweet.tweet_img}"/>
+          </div>`;
+  }
+  tweet_HTML += `<div class="tweet-obj-heart-likes">
             <i class="fa-regular fa-heart"></i>
             <p>${tweet.nb_of_likes}</p>
           </div>
@@ -113,7 +115,7 @@ const showTweets = () => {
       }
       user["tweets"] = tweets;
       localStorage.setItem("user", JSON.stringify(user)); //update localstorage
-      console.log(user)
+      console.log(user);
     } catch (err) {
       console.log(err);
     }
@@ -146,11 +148,11 @@ const addNewTweet = () => {
       console.log(data);
       // append to user['tweets'] in localStorage the new added tweet
       user["tweets"].push({
-        'text': text,
-        'image_url': image_url,
-        'user_id': user.id,
-        'created_datetime': created_datetime,
-        'nb_of_likes': "0",
+        text: text,
+        image_url: image_url,
+        user_id: user.id,
+        created_datetime: created_datetime,
+        nb_of_likes: "0",
       });
       localStorage.setItem("user", JSON.stringify(user)); //update localstorage
       console.log(user);

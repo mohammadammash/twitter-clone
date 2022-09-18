@@ -556,7 +556,6 @@ header {
 .tweet-object img {
   width: 55px;
   height: 55px;
-  cursor: pointer;
 }
 
 .whatshappening {
@@ -649,7 +648,6 @@ header {
   width: 100%;
   padding: 12px 18px 0 16px;
   border-top: 1px solid #71767b;
-  cursor: pointer;
   height: fit-content;
 }
 
