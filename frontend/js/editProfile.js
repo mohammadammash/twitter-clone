@@ -13,6 +13,8 @@ const username = document.getElementById("username");
 const joined_at = document.getElementById("joined-at");
 const own_tweets_content = document.getElementById("own-tweets");
 const all_tweets_content = document.getElementById("all-tweets");
+const own_tweets_button = document.getElementById("own-tweets-btn");
+const all_tweets_button = document.getElementById("all-tweets-btn");
 
 //to redirect to feed page if left arrow is clicked
 left_arrow.addEventListener("click", function () {
@@ -153,12 +155,24 @@ const loadUserTweets = async () => {
   }
 };
 
-const laodFollowedTweets = () => {
+const loadFollowedTweets = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   for (let tweet of user.tweets) {
     createFollowedTweets(tweet);
   }
+  own_tweets_content.classList.add("display-none");
+  all_tweets_content.classList.remove("display-none");
 };
+
+const showFollowedTweets = () => {
+  own_tweets_content.classList.add("display-none");
+  all_tweets_content.classList.remove("display-none");
+};
+const showUserTweets = () => {
+  all_tweets_content.classList.add("display-none");
+  own_tweets_content.classList.remove("display-none");
+};
+
 
 //A function that retrieves user info from db and displays them in the input fields of the modal
 const changeInputValue = async () => {
@@ -228,5 +242,7 @@ save_changes.addEventListener("click", getNameBioFrInput);
 // each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
 window.addEventListener("load", checkIfPageIsInFrame);
 window.addEventListener("load", loadProfile);
+window.addEventListener("load", loadFollowedTweets);
 window.addEventListener("load", loadUserTweets);
-window.addEventListener("load", laodFollowedTweets);
+own_tweets_button.addEventListener("click", showUserTweets);
+all_tweets_button.addEventListener("click", showFollowedTweets);
