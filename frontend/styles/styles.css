@@ -299,11 +299,13 @@ body {
   justify-content: center;
   align-items: flex-end;
 }
-.modal .login-error{
+
+.modal .login-error {
   text-align: center;
   margin-top: 8px;
-  color:rgb(222, 2, 2);
+  color: rgb(222, 2, 2);
 }
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #71767b;
@@ -311,8 +313,9 @@ body {
   font-size: 15px;
   /* Firefox */
 }
-.pass-input::placeholder{
-  font-size:12px;
+
+.pass-input::placeholder {
+  font-size: 12px;
 }
 
 /* End of Login Modal */
@@ -424,7 +427,8 @@ header {
   justify-content: space-between;
   padding: 10px 0 10px 13%;
 }
-.nav-left{
+
+.nav-left {
   padding-top: 20px;
 }
 
@@ -457,10 +461,15 @@ header {
   cursor: pointer;
   border: none;
 }
-.danger{border:2px solid rgb(222, 2, 2);}
+
+.danger {
+  border: 2px solid rgb(222, 2, 2);
+}
+
 .home-tweet-btn:hover {
   opacity: 0.8;
 }
+
 /* User Profile info at the bottom of the left nav menu*/
 .account-info {
   width: 100%;
@@ -704,17 +713,21 @@ header {
   font-weight: 450;
   border-radius: 9999px;
 }
-.search-content{
-  height:80%;
+
+.search-content {
+  height: 80%;
 }
-.search-content .name{
-  font-size:16px;
+
+.search-content .name {
+  font-size: 16px;
   margin-left: 5px;
 }
-.search-content .username{
-  font-size:14px;
+
+.search-content .username {
+  font-size: 14px;
 }
-.search-content img{
+
+.search-content img {
   margin-bottom: 11px;
 }
 
@@ -917,7 +930,7 @@ header {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s;
-  position:absolute;
+  position: absolute;
 }
 
 .bg-active {
@@ -938,7 +951,7 @@ header {
   justify-content: flex-start;
   flex-direction: column;
   color: white;
-  z-index:10;
+  z-index: 10;
   position: relative;
 }
 
@@ -1027,7 +1040,6 @@ header {
   justify-content: center;
 }
 
-
 .upload-cam-div i:hover {
   color: #1d9bf0;
 }
@@ -1037,80 +1049,87 @@ header {
   height: 5px;
 }
 /*! END Edit profile page modal */
-.mobile-nav-bar{
-  border:1px solid purple;
-  width:100vw;
-  height:50px;
+
+/* Nav bar for mobile devices */
+.mobile-nav-bar {
+  width: 100vw;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: sticky;
+  position: fixed;
   background-color: #000;
-  bottom:0;
-  }
-  
-  .fa-magnifying-glass{
-    color: #e7e9ea;
+  bottom: 0;
+  display:none;
+}
+
+.fa-magnifying-glass {
+  color: #e7e9ea;
+}
+
+/* Media queries */
+@media screen and (max-width: 1300px) {
+
+  header {
+    padding-left: 4%;
+    width: 15%;
   }
 
-  
-  /*! started here  */
-  /* Media queries */
-  
-  @media screen and (max-width: 1300px) {
-  
-    header {
-      padding-left: 4%;
-      width: 15%;
-    }
-  
-    div.feed-container {
-      margin-left: 15%;
-    }
-  
-    header .home-tweet-btn {
-      width: 100px;
-      border-radius: 9999px;
-      font-size: 20px;
-    }
-  
-    header span {
-      display: none;
-    }
-  
-    header .account-info {
-      display: flex;
-      justify-content: center;
-    }
-  
-    .feed-content {
-      border: 5px solid red;
-    }
-  
-  
-    .feed-container {
-      width: 1000px;
-    }
+  div.feed-container {
+    margin-left: 15%;
+  }
+
+  header .home-tweet-btn {
+    width: 100px;
+    border-radius: 9999px;
+    font-size: 20px;
+  }
+
+  header span {
+    display: none;
+  }
+
+  header .account-info {
+    display: flex;
+    justify-content: center;
+  }
+
+  .feed-container {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .search-section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    display: none;
+  }
+
+  div.feed-container {
+    margin-left: 0;
+  }
+
+  .mobile-nav-bar {
+    display: inline-flex;
+  }
+
+  .edit-prof-btn button{
+    width:100px;
   }
   
-  @media screen and (max-width: 1100px) {
-    .search-section {
-      display: none;
-    }
+  .name{
+    margin-top: 30px;
   }
-  
-  @media screen and (max-width: 800px) {
-    .search-section {
-      display: none;
-    }
-  
-    header {
-      display: none;
-    }
-  
-    div.feed-container {
-      margin-left: 0;
-    }
-  
-  
+}
+
+
+/* @media only screen and (max-width: 800px) and (min-width: 100px)  {
+  .mobile-nav-bar{
+    display: flex;
   }
+} */
