@@ -56,6 +56,7 @@ function timeDifference(tweetDate) {
 const addTweet_to_feed = (tweet) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const dateDiff = timeDifference(tweet.created_datetime);
+  if(!tweet.avatar_url) tweet.avatar_url = '../assets/dummy-profile-pic.png'; 
 
   const tweet_HTML = `
       <div class="tweet-object">

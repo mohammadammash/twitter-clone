@@ -36,7 +36,6 @@ $image = base64_to_jpeg($avatar_url_base64, 'user_images/'.$username.'.jpeg');
 $target_Path = "/user_images";
 move_uploaded_file($image, $target_Path);
 $avatar_url = "../../backend/user_images/".$username.".jpeg";
-echo ($avatar_url);
 
 // intializing default values instead of null
 $bio = '';
