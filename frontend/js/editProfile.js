@@ -7,8 +7,14 @@ const edited_name = document.getElementById('edited-name');//name
 const edited_bio = document.getElementById('edited-bio');//bio
 const name_on_page = document.getElementById('name-on-page');
 const bio_on_page = document.getElementById('bio-on-page');
-
+const left_arrow = document.getElementById('left-arrow');
 // console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
+
+//to redirect to feed page if left arrow is clicked
+left_arrow.addEventListener('click', function () {
+    window.location.href = "./feed.html";
+})
+
 
 
 // On window load => check if page is in frame or without parent location
@@ -48,7 +54,6 @@ const changeInputValue = async () => {
         bio_on_page.innerHTML=original_bio;
         edited_name.value = original_name;
         edited_bio.value = original_bio;
-
 
     } catch (err) {
         console.log(err);
@@ -116,7 +121,7 @@ let getNameBioFrInput = (e) => {
 
 save_changes.addEventListener("click", getNameBioFrInput);
 
-//!----------------------------------------------------------------------------------
+//!-------------DONE WITH MODAL'S SECTION---------------------------------------------------------------------
 
 
 
