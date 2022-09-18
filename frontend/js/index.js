@@ -162,7 +162,11 @@ const loginUser = (e = "") => {
 //validation:
 const validateSignUp = (full_name, username, password, email, phone_nbr) => {
   // reset inputs first:
-  signup_full_name.style.border = "none";
+  signup_full_name.classList.remove('danger');
+  signup_username.classList.remove('danger');
+  signup_password.classList.remove('danger');
+  signup_email.classList.remove('danger');
+  signup_phone_nb.classList.remove("danger");
 
   const validEmail = () => {
     const regEx = /[a-z0-9_\.-]{3,}@[a-z0-9_\.-]{5,}/;
@@ -186,34 +190,34 @@ const validateSignUp = (full_name, username, password, email, phone_nbr) => {
   };
   const validUsername = () => {
     // Usernames can only use letters, numbers, underscores, and periods.
-    const usernameRegex = /^[a-z0-9_.]+$/;
+    const usernameRegex = /[a-z0-9_.]{6,}/;
     return usernameRegex.test(username);
   };
   const validPassword = () => {
     const regEx =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
     return regEx.test(password);
   };
 
   let valid = true;
   if (full_name.length < 8) {
-    signup_full_name.style.border = "3px solid red";
+    signup_full_name.classList.add('danger');
     valid = false;
   }
   if (!validEmail()) {
-    signup_email.style.border = "3px solid red";
+    signup_email.classList.add('danger');
     valid = false;
   }
   if (!validPhonenb()) {
-    signup_phone_nb.style.border = "3px solid red";
+    signup_phone_nb.classList.add('danger');
     valid = false;
   }
   if (!validUsername()) {
-    signup_username.style.border = "3px solid red";
+    signup_username.classList.add('danger');
     valid = false;
   }
   if (!validPassword()) {
-    signup_password.style.border = "3px solid red";
+    signup_password.classList.add('danger');
     valid = false;
   }
 

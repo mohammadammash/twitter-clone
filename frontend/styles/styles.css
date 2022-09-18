@@ -29,7 +29,6 @@ input {
 iframe {
   border: none;
 }
-.danger{border:1px solid rgb(172, 0, 0);}
 
 /* UTILITIES */
 .btn {
@@ -254,7 +253,7 @@ body {
   margin: 15px 0;
   padding: 5px;
   background-color: transparent;
-  color: #e7e9ea;
+  color: #71767b;
 }
 
 .signup-footer .img-section {
@@ -305,7 +304,11 @@ body {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #71767b;
   opacity: 1;
+  font-size: 15px;
   /* Firefox */
+}
+.pass-input::placeholder{
+  font-size:12px;
 }
 
 /* End of Login Modal */
@@ -447,11 +450,10 @@ header {
   cursor: pointer;
   border: none;
 }
-
+.danger{border:2px solid rgb(222, 2, 2);}
 .home-tweet-btn:hover {
   opacity: 0.8;
 }
-
 /* User Profile info at the bottom of the left nav menu*/
 .account-info {
   width: 100%;
