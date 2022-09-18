@@ -11,6 +11,8 @@ const left_arrow = document.getElementById("left-arrow");
 const profile_picture = document.getElementById("profile-picture");
 const username = document.getElementById("username");
 const joined_at = document.getElementById("joined-at");
+const own_tweets_content = document.getElementById("own-tweets");
+const all_tweets_content = document.getElementById("all-tweets");
 
 //to redirect to feed page if left arrow is clicked
 left_arrow.addEventListener("click", function () {
@@ -43,12 +45,76 @@ modalClose.addEventListener("click", function () {
   modalBg.classList.remove("bg-active");
 });
 
+// return diff between now and tweet creation/post time:
+function timeDifference(tweetDate) {
+  const rightnow = Date.now();
+
+  //difference in sec
+  const sec = Math.abs(rightnow - tweetDate) / 1000;
+  // get total days between two dates:
+  const days = Math.floor(sec / 86400);
+  // months:
+  const months = Math.floor(days / 30);
+  //years:
+  const years = Math.floor(months / 12);
+  // get hours
+  const hours = Math.floor(sec / 3600);
+  // get minutes
+  const minutes = Math.floor(sec / 60);
+  // get seconds
+
+  if (years > 0) return `${years}y`;
+  else if (months > 0) return `${months}m`;
+  else if (days > 0) return `${days}d`;
+  else if (hours > 0) return `${hours}h`;
+  else if (minutes > 0) return `${minutes}m`;
+  return `${Math.floor(sec)}s`;
+}
+
+// append tweet to html:
+const createTweet = (tweet, user) => {
+  const tweet_HTML = `
+    <div class="tweet-object">
+        <img class="pp" src="${user.avatar_url}" />
+        <div class="tweet-obj-contents">
+          <div class="tweet-obj-writer">
+            <a href="" class="tweet-obj-name">Name
+              <span class="tweet-obj-username"> ${user.username} </span>
+              <span class="tweet-obj-time"> ${timeDifference(
+                tweet.created_datetime
+              )}</span>
+            </a>
+          </div>
+          <div class="tweet-obj-text">
+            <p>
+              ${tweet.text}
+            </p>
+          </div>`;
+  //   <div class="tweet-obj-img">
+  //     <img class="tweet-img" src="${tweet.image_url}" alt=''/>
+  //   </div>
+  tweet`<div class="tweet-obj-heart-likes">
+            <i class="fa-regular fa-heart"></i>
+            <p>${tweet.nb_of_likes}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  own_tweets_content.innerHTML += tweet_HTML;
+};
+
 const loadUserTweets = async () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const url = `http://localhost/twitter-clone/backend/user_info.php?get_user_tweets=${user.id}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data[0]);
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const url = `http://localhost/twitter-clone/backend/get_user_tweets.php?user_id=${user.id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    for (let own_tweet of data) {
+      createTweet(own_tweet, user);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 //A function that retrieves user info from db and displays them in the input fields of the modal

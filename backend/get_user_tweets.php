@@ -9,7 +9,7 @@ if (isset($_GET["user_id"])) {
     $userid = $_GET['user_id'];
 
     $sql_query = "
-    SELECT tweets.id, tweets.text, tweets.image_url, tweets.created_datetime, tweets.nb_of_likes
+    SELECT id, text, image_url, created_datetime, nb_of_likes
     FROM tweets
     WHERE tweets.user_id=$userid";
 
