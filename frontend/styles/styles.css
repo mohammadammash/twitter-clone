@@ -1037,3 +1037,80 @@ header {
   height: 5px;
 }
 /*! END Edit profile page modal */
+.mobile-nav-bar{
+  border:1px solid purple;
+  width:100vw;
+  height:50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  background-color: #000;
+  bottom:0;
+  }
+  
+  .fa-magnifying-glass{
+    color: #e7e9ea;
+  }
+
+  
+  /*! started here  */
+  /* Media queries */
+  
+  @media screen and (max-width: 1300px) {
+  
+    header {
+      padding-left: 4%;
+      width: 15%;
+    }
+  
+    div.feed-container {
+      margin-left: 15%;
+    }
+  
+    header .home-tweet-btn {
+      width: 100px;
+      border-radius: 9999px;
+      font-size: 20px;
+    }
+  
+    header span {
+      display: none;
+    }
+  
+    header .account-info {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .feed-content {
+      border: 5px solid red;
+    }
+  
+  
+    .feed-container {
+      width: 1000px;
+    }
+  }
+  
+  @media screen and (max-width: 1100px) {
+    .search-section {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .search-section {
+      display: none;
+    }
+  
+    header {
+      display: none;
+    }
+  
+    div.feed-container {
+      margin-left: 0;
+    }
+  
+  
+  }
