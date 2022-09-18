@@ -172,6 +172,7 @@ body {
 }
 
 .modal-content {
+  border: 10px solid red;
   background-color: #000;
   margin: 5% auto;
   /* 15% from the top and centered */
@@ -196,6 +197,10 @@ body {
   margin-top: 0;
 }
 
+.modal-content{
+  width:600px;
+}
+
 /* The Close Button */
 .close-btn {
   color: #aaa;
@@ -210,7 +215,8 @@ body {
 }
 
 .authentication-input {
-  width: 400px;
+  width: 100%;
+  /* width: 400px; */
   height: 50px;
   border: 0.1px solid #71767b;
   margin-bottom: 10px;
@@ -224,6 +230,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width:100%;
 }
 
 .form .dob-intro {
@@ -1157,12 +1164,10 @@ width:250px;
 
 .section2 .end>.terms{
   font-size: 9px;
-  border:1px solid blue;
   width: 70vw;
 }
 .end{
   width:100%;
-  border:1px solid red;
+}
 }
 
-}
