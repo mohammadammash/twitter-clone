@@ -35,8 +35,8 @@ const loadProfile = () => {
   else
     profile_picture.style.backgroundImage =
       "url('../assets/dummy-profile-pic.png')";
-  console.log(user.banner);
   if (user.banner)
+    console.log(banner_container, user.banner);
     banner_container.style.backgroundImage = `url(${user.banner})`;
   if (user.bio) bio_on_page.textContent = user.bio;
   name_on_page.textContent = user.full_name;
@@ -234,9 +234,9 @@ const update_user_local_data = (
   new_name,
   new_bio
 ) => {
-  if (base64StringBanner)
+  if (base64StringBanner || user.banner)
     user.banner = `../../backend/user_images/banner_${user.username}.jpeg`;
-  if (base64StringProfile)
+  if (base64StringProfile || user.avatar_url)
     user.avatar_url = `../../backend/user_images/${user.username}.jpeg`;
   user.full_name = new_name;
   user.bio = new_bio;
