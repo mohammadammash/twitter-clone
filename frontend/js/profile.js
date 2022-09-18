@@ -15,10 +15,11 @@ const own_tweets_content = document.getElementById("own-tweets");
 const all_tweets_content = document.getElementById("all-tweets");
 const own_tweets_button = document.getElementById("own-tweets-btn");
 const all_tweets_button = document.getElementById("all-tweets-btn");
-const new_profile_pic = document.getElementById('new-profile-pic');
-const new_profile_banner = document.getElementById("new-profile-banner");
+const new_profile_pic = document.getElementById("new-profile-pic");
+const new_profile_banner = document.getElementById("new-banner-pic");
 const new_profile_pic_show = document.getElementById("profile-show");
 const new_profile_banner_show = document.getElementById("profile-banner");
+var base64StringProfile, base64StringBanner;
 
 //to redirect to feed page if left arrow is clicked
 left_arrow.addEventListener("click", function () {
@@ -43,9 +44,21 @@ const checkIfPageIsInFrame = () => {
   // if the page is in an iframe continue normally
 };
 
+//places users info in edit input fields
+const show_edit_modal_data = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  edited_bio.value = user.bio ? user.bio : "No Bio";
+  edited_name.value = user.username;
+  if (user.avatar_url)
+    new_profile_pic_show.style.backgroundImage = `url(${user.avatar_url})`;
+  if (user.banner)
+    new_profile_banner_show.style.backgroundImage = `url(${user.banner})`;
+};
+
 // Edit Profile Modal EventListeners
 modalBtn.addEventListener("click", function () {
   modalBg.classList.add("bg-active");
+  show_edit_modal_data();
 });
 modalClose.addEventListener("click", function () {
   modalBg.classList.remove("bg-active");
@@ -178,50 +191,62 @@ const showUserTweets = () => {
   own_tweets_content.classList.remove("display-none");
 };
 
-//A function that gets user info from input fields and update the db accordingly
-let getNameBioFrInput = () => {
-
-  const user = JSON.parse(localStorage.getItem("user"));
-  edited_bio.value = user.bio ? user.bio : 'No Bio';
-  edited_name.value = user.username;
-  if (user.avatar_url)
-    new_profile_pic_show.style.backgroundImage = `url(${user.avatar_url})`;
-  if (user.banner)
-    new_profile_pic_banner.style.backgroundImage = `url(${user.banner})`;
-
-
-  const update_db = async () => {
-    try {
-      const url = "http://localhost/twitter-clone/backend/edit_profile.php";
-      const response = await fetch(url, {
-        method: "POST",
-        body: new URLSearchParams({
-          user_id: user.id,
-          edited_name: full_name,
-          edited_bio: bio,
-          edited_pp: "",
-          edited_banner: "",
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  update_db();
-
-  // //To display the updated info on the page
-  // const update_page_info = () => {
-  //   name_on_page.innerHTML = full_name;
-  //   bio_on_page.innerHTML = bio;
-  // };
-
-  // update_page_info();
-  // modalBg.classList.remove("bg-active");
+// show profile image directly after choosing new image in edit_modal and save url
+function uploadProfileImage() {
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      base64StringProfile = reader.result
+        .replace("data:", "")
+        .replace(/^.+,/, "");
+      new_profile_pic_show.style.backgroundImage = `url(${e.target.result})`;
+    };
+    reader.readAsDataURL(this.files[0]);
+  }
+}
+// show profile image directly after choosing new image in edit_modal and save url
+function uploadBannerImage() {
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      base64StringBanner = reader.result
+        .replace("data:", "")
+        .replace(/^.+,/, "");
+      new_profile_banner_show.style.backgroundImage = `url(${e.target.result})`;
+    };
+    reader.readAsDataURL(this.files[0]);
+  }
+}
+const update_user = async () => {
+  // try {
+  //   const url = "http://localhost/twitter-clone/backend/edit_profile.php";
+  //   const response = await fetch(url, {
+  //     method: "POST",
+  //     body: new URLSearchParams({
+  //       user_id: user.id,
+  //       edited_name: full_name,
+  //       edited_bio: bio,
+  //       edited_pp: "",
+  //       edited_banner: "",
+  //     }),
+  //   });
+  //   const data = await response.json();
+  //   console.log(data);
+  // } catch (err) {
+  //   console.log(err);
+  // }
 };
-getNameBioFrInput();
-save_changes.addEventListener("click", getNameBioFrInput);
+
+// //To display the updated info on the page
+// const update_page_info = () => {
+//   name_on_page.innerHTML = full_name;
+//   bio_on_page.innerHTML = bio;
+// };
+
+// update_page_info();
+// modalBg.classList.remove("bg-active");
+
+save_changes.addEventListener("click", update_user);
 
 // each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
 window.addEventListener("load", checkIfPageIsInFrame);
@@ -230,3 +255,6 @@ window.addEventListener("load", loadFollowedTweets);
 window.addEventListener("load", loadUserTweets);
 own_tweets_button.addEventListener("click", showUserTweets);
 all_tweets_button.addEventListener("click", showFollowedTweets);
+// whenever profile image or banner changes => update the picture shown:
+new_profile_pic.addEventListener("change", uploadProfileImage);
+new_profile_banner.addEventListener("change", uploadBannerImage);
