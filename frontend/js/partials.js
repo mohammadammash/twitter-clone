@@ -5,8 +5,9 @@ const username = document.getElementById("username");
 // to handle search_query_text and content to show(users) below it
 const search_bar = document.getElementById("search-text");
 const search_content = document.getElementById("search-content");
-// logout
 const logout_btn = document.getElementById('logout');
+
+localStorage.clear();
 
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {

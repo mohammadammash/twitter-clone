@@ -159,6 +159,67 @@ const loginUser = (e = "") => {
 };
 
 // SIGN UP FUNCTIONS
+//validation:
+const validateSignUp = (full_name, username, password, email, phone_nbr) => {
+  // reset inputs first:
+  signup_full_name.style.border = "none";
+
+  const validEmail = () => {
+    const regEx = /[a-z0-9_\.-]{3,}@[a-z0-9_\.-]{5,}/;
+    return regEx.test(email);
+  };
+  const validPhonenb = () => {
+    if (phone_nbr.length < 11) return false;
+    const keyNbs = phone_nbr.slice(4, 6);
+    const countrycode = phone_nbr.slice(0, 4);
+    let valid = false;
+    if (countrycode == "+961") {
+      if (phone_nbr.slice(4, 5) == "3" && phone_nbr.slice(5).length == "6")
+        valid = true;
+      else if (
+        (keyNbs == "71" || keyNbs == "70" || keyNbs == "76") &&
+        phone_nbr.slice(6).length == "6"
+      )
+        valid = true;
+    }
+    return valid;
+  };
+  const validUsername = () => {
+    // Usernames can only use letters, numbers, underscores, and periods.
+    const usernameRegex = /^[a-z0-9_.]+$/;
+    return usernameRegex.test(username);
+  };
+  const validPassword = () => {
+    const regEx =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    return regEx.test(password);
+  };
+
+  let valid = true;
+  if (full_name.length < 8) {
+    signup_full_name.style.border = "3px solid red";
+    valid = false;
+  }
+  if (!validEmail()) {
+    signup_email.style.border = "3px solid red";
+    valid = false;
+  }
+  if (!validPhonenb()) {
+    signup_phone_nb.style.border = "3px solid red";
+    valid = false;
+  }
+  if (!validUsername()) {
+    signup_username.style.border = "3px solid red";
+    valid = false;
+  }
+  if (!validPassword()) {
+    signup_password.style.border = "3px solid red";
+    valid = false;
+  }
+
+  return valid;
+};
+
 const showSignupModal = () => {
   // make sure login-modal is hidden(add display-none) - hence we can go directly from login-modal to sign-up modal
   login_modal.classList.add("display-none"); //note: it have no effect if class already exists
@@ -177,6 +238,7 @@ const createNewUser = (e) => {
   const birthyear = yearSelect.options[yearSelect.selectedIndex].value;
   const joined_in_date = getTodayDate(); //as:  dd/mm/yy
   const avatar_url = base64String ? base64String : "";
+  if (!validateSignUp(full_name, username, password, email, phone_nbr)) return;
 
   const add_user = async () => {
     try {
