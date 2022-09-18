@@ -5,6 +5,9 @@ const username = document.getElementById("username");
 // to handle search_query_text and content to show(users) below it
 const search_bar = document.getElementById("search-text");
 const search_content = document.getElementById("search-content");
+// logout
+const logout_btn = document.getElementById('logout');
+
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {
   const user_HTML = `
@@ -60,7 +63,14 @@ const checkCurrentUser = () => {
   }
 };
 
+// logout:
+const logUserOut = ()=>{
+  localStorage.clear();
+}
+
 // check if there is a user(redirected from home/index) or if anyone tried to visit this page directly from URL
 window.addEventListener("load", checkCurrentUser);
 // listen to any change in search bar text immediately!:
 search_bar.addEventListener("input", getUsers);
+// logout:
+logout_btn.addEventListener('click',logUserOut);
