@@ -55,11 +55,8 @@ WHERE
     id = $user_id";
 
 
-if (mysqli_query($mysqli, $sql_query)) {
-    echo "Records were updated successfully.";
-} else {
-    echo "ERROR: Could not able to execute $sql_query. " . mysqli_error($mysqli);
-}
+$query = $mysqli->prepare($sql_query);
+$query->execute();
 
 
 $response = [];

@@ -19,6 +19,7 @@ const new_profile_pic = document.getElementById("new-profile-pic");
 const new_profile_banner = document.getElementById("new-banner-pic");
 const new_profile_pic_show = document.getElementById("profile-show");
 const new_profile_banner_show = document.getElementById("profile-banner");
+const banner_container = document.getElementById("banner-container");
 var base64StringProfile, base64StringBanner;
 
 //to redirect to feed page if left arrow is clicked
@@ -29,7 +30,14 @@ left_arrow.addEventListener("click", function () {
 //load profile
 const loadProfile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  profile_picture.style.backgroundImage = `url(${user.avatar_url})`;
+  if (user.avatar_url)
+    profile_picture.style.backgroundImage = `url(${user.avatar_url})`;
+  else
+    profile_picture.style.backgroundImage =
+      "url('../assets/dummy-profile-pic.png')";
+  console.log(user.banner);
+  if (user.banner)
+    banner_container.style.backgroundImage = `url(${user.banner})`;
   if (user.bio) bio_on_page.textContent = user.bio;
   name_on_page.textContent = user.full_name;
   username.textContent = user.username;
@@ -217,35 +225,61 @@ function uploadBannerImage() {
     reader.readAsDataURL(this.files[0]);
   }
 }
-const update_user = async () => {
-  // try {
-  //   const url = "http://localhost/twitter-clone/backend/edit_profile.php";
-  //   const response = await fetch(url, {
-  //     method: "POST",
-  //     body: new URLSearchParams({
-  //       user_id: user.id,
-  //       edited_name: full_name,
-  //       edited_bio: bio,
-  //       edited_pp: "",
-  //       edited_banner: "",
-  //     }),
-  //   });
-  //   const data = await response.json();
-  //   console.log(data);
-  // } catch (err) {
-  //   console.log(err);
-  // }
+
+// update user local data after
+const update_user_local_data = (
+  user,
+  base64StringBanner,
+  base64StringProfile,
+  new_name,
+  new_bio
+) => {
+  if (base64StringBanner)
+    user.banner = `../../backend/user_images/banner_${user.username}.jpeg`;
+  if (base64StringProfile)
+    user.avatar_url = `../../backend/user_images/${user.username}.jpeg`;
+  user.full_name = new_name;
+  user.bio = new_bio;
+  localStorage.setItem("user", JSON.stringify(user));
+  loadProfile();
 };
 
-// //To display the updated info on the page
-// const update_page_info = () => {
-//   name_on_page.innerHTML = full_name;
-//   bio_on_page.innerHTML = bio;
-// };
+const update_user = async () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  try {
+    const url = "http://localhost/twitter-clone/backend/edit_profile.php";
+    const response = await fetch(url, {
+      method: "POST",
+      body: new URLSearchParams({
+        user_id: user.id,
+        edited_name: edited_name.value,
+        username: user.username,
+        edited_bio: edited_bio.value,
+        edited_pp: base64StringProfile,
+        edited_banner: base64StringBanner,
+      }),
+    });
+    const data = await response.json();
+    if (data) {
+      //success
+      console.log(data);
+      update_user_local_data(
+        user,
+        base64StringProfile,
+        base64StringBanner,
+        edited_name.value,
+        edited_bio.value
+      );
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // update_page_info();
 // modalBg.classList.remove("bg-active");
 
+// save after altering profile:
 save_changes.addEventListener("click", update_user);
 
 // each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
