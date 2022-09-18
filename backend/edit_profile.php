@@ -9,21 +9,18 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 if (isset($_POST["user_id"], $_POST["edited_name"])) {
     $user_id = $_POST["user_id"];
     $edited_name = $_POST["edited_name"];
-    // $edited_bio=$_POST["edited_bio"];
-    // $edited_pp=$_POST["edited_pp"];
-    // $edited_banner=$_POST["edited_banner"];
+    $edited_bio = $_POST["edited_bio"];
+    $edited_pp = $_POST["edited_pp"];
+    $edited_banner = $_POST["edited_banner"];
 
 
     $sql_query = "
 UPDATE users 
 SET 
-    full_name ='$edited_name'  
+full_name ='$edited_name' , bio = '$edited_bio', avatar_url='$edited_pp' , banner='$edited_banner'  
 WHERE
     id = $user_id";
 
-    echo "yoo";
-    echo gettype($edited_name);
-    echo "yeah";
 
     if (mysqli_query($mysqli, $sql_query)) {
         echo "Records were updated successfully.";
