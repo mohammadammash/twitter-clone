@@ -129,6 +129,20 @@ function populateYears() {
 }
 
 // LOGIN FUNCTIONS
+const validateLogin = (username, password) => {
+  login_username.classList.remove("danger");
+  login_password.classList.remove("danger");
+
+  if (!username || username.length < 6) {
+    login_username.classList.add("danger");
+    return false;
+  } else if (!password) {
+    login_password.classList.add("danger");
+    return false;
+  }
+  return true;
+};
+
 const showLoginModal = () => {
   // there is no way to access login from signup page => no need to hide signup-modal hence it is already hidden
   login_modal.classList.remove("display-none");
@@ -143,29 +157,31 @@ const loginUser = (e = "") => {
   else username = login_username.value;
   if (signup_password.value) password = signup_password.value;
   else password = login_password.value;
+  if (!validateLogin(username, password)) return;
   const user_login = async () => {
     try {
       const url = `http://localhost/twitter-clone/backend/login.php?username=${username}&password=${password}`;
       const response = await fetch(url);
       const data = await response.json();
       // add user as currentUser
-      localStorage.setItem("user", JSON.stringify(data[0]));
-      checkCurrentUser(); //to redirect to home page if user added
-    } catch (err) {
+      if (data[0]) {
+        localStorage.setItem("user", JSON.stringify(data[0]));
+        checkCurrentUser(); //to redirect to home page if user added
+      }
+      } catch (err) {
       console.log(err);
     }
   };
   user_login();
 };
-
 // SIGN UP FUNCTIONS
 //validation:
 const validateSignUp = (full_name, username, password, email, phone_nbr) => {
   // reset inputs first:
-  signup_full_name.classList.remove('danger');
-  signup_username.classList.remove('danger');
-  signup_password.classList.remove('danger');
-  signup_email.classList.remove('danger');
+  signup_full_name.classList.remove("danger");
+  signup_username.classList.remove("danger");
+  signup_password.classList.remove("danger");
+  signup_email.classList.remove("danger");
   signup_phone_nb.classList.remove("danger");
 
   const validEmail = () => {
@@ -201,23 +217,23 @@ const validateSignUp = (full_name, username, password, email, phone_nbr) => {
 
   let valid = true;
   if (full_name.length < 8) {
-    signup_full_name.classList.add('danger');
+    signup_full_name.classList.add("danger");
     valid = false;
   }
   if (!validEmail()) {
-    signup_email.classList.add('danger');
+    signup_email.classList.add("danger");
     valid = false;
   }
   if (!validPhonenb()) {
-    signup_phone_nb.classList.add('danger');
+    signup_phone_nb.classList.add("danger");
     valid = false;
   }
   if (!validUsername()) {
-    signup_username.classList.add('danger');
+    signup_username.classList.add("danger");
     valid = false;
   }
   if (!validPassword()) {
-    signup_password.classList.add('danger');
+    signup_password.classList.add("danger");
     valid = false;
   }
 

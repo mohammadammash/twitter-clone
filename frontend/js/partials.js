@@ -7,8 +7,6 @@ const search_bar = document.getElementById("search-text");
 const search_content = document.getElementById("search-content");
 const logout_btn = document.getElementById('logout');
 
-localStorage.clear();
-
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {
   const user_HTML = `
