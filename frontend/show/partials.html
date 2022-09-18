@@ -56,7 +56,7 @@
   <!-- END navigation section, left nav bar -->
 
   <!-- START feed section -->
-  <div class="feed-container">
+  <div id="main-iframe" class="feed-container">
     <iframe class="feed" name="iframe" id="iframe" src="./feed.html">
       <!-- START feed content -->
     </iframe>
@@ -64,7 +64,7 @@
   <!-- END feed section -->
 
   <!-- START seach section (right) -->
-  <section class="search-section">
+  <section id="search-section" class="search-section">
     <!-- search bar -->
     <div class="search-bar">
       <input style="display:block;" id='search-text' type="text" placeholder="Search Twitter" />
@@ -103,8 +103,8 @@
   <!--START Mobile nav bar -->
   <div class="mobile-nav-bar">
     <a href="./feed.html"><i class="fa-solid fa-house"></i></a>
-    <a href="./profile.html"><i class="fa-regular fa-user"></i></a>
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <a href="./profile.html" target="iframe"><i class="fa-regular fa-user"></i></a>
+    <a class="search-btn-mobile" id="search-btn-mobile"><i class="fa-solid fa-magnifying-glass"></i></a>
     <!--END Mobile nav bar -->
   </div>
 
