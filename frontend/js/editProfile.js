@@ -8,7 +8,7 @@ const edited_bio = document.getElementById('edited-bio');//bio
 const name_on_page = document.getElementById('name-on-page');
 const bio_on_page = document.getElementById('bio-on-page');
 const left_arrow = document.getElementById('left-arrow');
-// console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
+
 
 //to redirect to feed page if left arrow is clicked
 left_arrow.addEventListener('click', function () {
@@ -35,14 +35,9 @@ modalClose.addEventListener('click', function () {
 
 
 //A function that retrieves user info from db and displays them in the input fields of the modal
-
-//to change user_id = 1, to the below syntax since user's info is not showing on my device's local storage
-// const user = JSON.parse(localStorage.getItem("user"));
-
 const changeInputValue = async () => {
     try {
-        // const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=${user.id}`;
-        const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=101`;
+        const url = `http://localhost/twitter-clone/backend/user_info.php?user_id=${user.id}`;
         const response = await fetch(url);
         const data = await response.json();
         const original_name = data[0].full_name;
@@ -63,26 +58,17 @@ const changeInputValue = async () => {
 changeInputValue();
 
 
-
-
-
-
-
 //A function that gets user info from input fields and update the db accordingly
 let getNameBioFrInput = (e) => {
     e.preventDefault();
     const full_name = edited_name.value;
     const bio = edited_bio.value;
 
-
+    const user = JSON.parse(localStorage.getItem("user"));
     console.log("name");
     console.log(full_name);
     console.log("bio");
     console.log(bio);
-    const user_id = 1;
-    //to change user_id = 1, to the below syntax since user's info is not showing on my device's local storage
-    // const user = JSON.parse(localStorage.getItem("user"));
-    // console.log("user in local storage " + JSON.parse(localStorage.getItem("user")));
 
     const update_db = async () => {
         try {
@@ -91,7 +77,7 @@ let getNameBioFrInput = (e) => {
             const response = await fetch(url, {
                 method: "POST",
                 body: new URLSearchParams({
-                    user_id: user_id,
+                    user_id: user.id,
                     edited_name: full_name,
                     edited_bio: bio,
                     edited_pp: "",
@@ -121,12 +107,6 @@ let getNameBioFrInput = (e) => {
 };
 
 save_changes.addEventListener("click", getNameBioFrInput);
-
-//!------------------------DONE WITH MODAL'S SECTION---------------------------------------------------------------------
-
-
-
-
 
 
 // each time page loads, check if the user tries to access the page without partials page(outside of frame=>redirect to partials)
