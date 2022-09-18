@@ -9,6 +9,8 @@ const logout_btn = document.getElementById('logout');
 
 // add the users to the search content in '../show/partials.html'
 const showInSearchContent = (user) => {
+  if(!user.avatar_url) user.avatar_url = '../assets/dummy-profile-pic.png';
+  
   const user_HTML = `
       <div class="tweet-object img">
         <img class="pp" src="${user.avatar_url}" />
