@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter. It's what's happening / Twitter</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/frontend/assets/twitter_logo.png" />
+  </head>
+  <body>
+    <!-- START OF FIRST ROW -->
+    <main class="main">
+      <!-- START OF LEFT SECTION -->
+      <div class="section1">
+        <img class="main-logo" src="./assets/logo-white-lg.png" />
+      </div>
+      <!-- END OF LEFT SECTION -->
+
+      <!-- START OF RIGHT SECTION -->
+      <div class="section2">
+        <!-- Signup section -->
+        <div class="signup-index">
+          <img class="logo" src="./assets/logo-white-small.png" />
+          <p class="title1 bold">Happening now</p>
+          <p class="title2 bold">Join Twitter today</p>
+          <div class="end">
+            <button id='signup-show' class="btn btn-lg">Sign up</button>
+            <p class="terms">
+              By signing up, you agree to the
+              <a href="#" class="blue-text">Terms of Service</a> and
+              <a href="#" class="blue-text">Privacy Policy</a>, including
+              <a href="#" class="blue-text">Cookie Use.</a>
+            </p>
+          </div>
+        </div>
+        <!-- Login Section -->
+        <div class="login-index">
+          <p class="text bold">Already have an account?</p>
+          <button id='login-show' class="btn btn-trans">Sign in</button>
+        </div>
+      </div>
+      <!-- END OF RIGHT SECTION -->
+    </main>
+    <!-- END OF FIRST/MAIN ROW -->
+
+    <!-- START OF FOOTER -->
+    <footer class="footer">
+      <!-- Two Columns: footer-links and copyrights paragraph -->
+      <ul class="footer-links">
+        <a href="#" class="footer-item"><li>About</li></a>
+        <a href="#" class="footer-item"><li>Help</li></a>
+        <a href="#" class="footer-item"><li>Center</li></a>
+        <a href="#" class="footer-item"><li>Terms of Service</li></a>
+        <a href="#" class="footer-item"><li>Privacy Policy</li></a>
+        <a href="#" class="footer-item"><li>Cookie Policy</li></a>
+        <a href="#" class="footer-item"><li>Accessibility</li></a>
+        <a href="#" class="footer-item"><li>Ads info</li></a>
+        <a href="#" class="footer-item"><li>Blog</li></a>
+        <a href="#" class="footer-item"><li>Status</li></a>
+        <a href="#" class="footer-item"><li>Careers</li></a>
+        <a href="#" class="footer-item"><li>Brand Resources</li></a>
+        <a href="#" class="footer-item"><li>Advertising</li></a>
+        <a href="#" class="footer-item"><li>Marketing</li></a>
+        <a href="#" class="footer-item"><li>Twitter for Business</li></a>
+        <a href="#" class="footer-item"><li>Developers</li></a>
+        <a href="#" class="footer-item"><li>Directory</li></a>
+        <a href="#" class="footer-item"><li>Settings</li></a>
+      </ul>
+      <p class="copyrights">© 2022 Twitter, Inc.</p>
+    </footer>
+    <!-- END OF FOOTER -->
+
+    <!-- START OF MODALS -->
+    <!-- Start of Modal/Popup for SignUp -->
+    <div id="signup-modal" class="modal display-none"> 
+      <div class="modal-content">
+        <span id="close-signup" class="close-btn">&times;</span>
+        <p class="title bold">Create your account</p>
+        <form id="signup-form" class="form">
+          <input
+            class="authentication-input"
+            id="signup-name"
+            type="text"
+            placeholder="Full Name (At least 6 characters)"
+          />
+          <input
+            class="authentication-input"
+            id="signup-phone"
+            type="text"
+            placeholder="Phone Number (+9613... or +9617...)"
+          />
+          <input
+            class="authentication-input"
+            id="signup-email"
+            type="text"
+            placeholder="Email"
+          />
+          <input
+            class="authentication-input"
+            id="signup-username"
+            type="text"
+            placeholder="Username (at least 6 charcs)"
+          />
+          <input
+            class="authentication-input pass-input"
+            id="signup-password"
+            type="password"
+            placeholder="Password (8-20 charc, at least: 1 upper,1 lower,1 number,1 special char)"
+          />
+          <div class="dob-intro">
+            <p class="dob-title">Date of birth</p>
+            This will not be shown publicly. Confirm your own age, even if this
+            account is for a business, a pet, or something else.
+          </div>
+          <div class="signup-footer">
+            <div class="dob-section">
+              <select id="signup-birthday"></select>
+              <select id="signup-birthmonth"></select>
+              <select id="signup-birthyear"></select>
+            </div>
+            <div class="img-section">
+            <input type="file" id="signup-imgurl" accept="image/*">
+            <img
+            style="width:100px; height:100px;"
+            id="signup-img"
+            class="signup-img"
+            src="./assets/dummy-profile-pic.png"
+            >
+            </div>
+          </div>
+          <div class="signup-btn">
+            <button id="signup-submit" class="btn btn-lg">Sign up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- End of Modal/Popup for SignUp -->
+
+    <!-- Start of Modal/Popup for Login -->
+       <div id="login-modal" class="modal display-none">
+        <div class="modal-content">
+          <span id="close-login" class="close-btn">&times;</span>
+            <form class="login-form">
+              <img src="./assets/logo-white-lg.png" alt="twitter-logo">
+              <span class="title bold">Sign in to Twitter</span>
+              <input id="login-username" class="authentication-input" type="text" placeholder="Username">
+              <input id="login-password" class="authentication-input" type="password" placeholder="Password">
+            <button id="login-submit" class="btn btn-lg">Log in</button>
+            </form>
+              <p class="login-footer">Don't have an account?&nbsp;<a id="signup-link" class="blue-text"> Sign up</span></p>
+              <p id="unrecognized-login" class="display-none login-error">UnRecognized User!!</p>
+              </div>
+      </div>
+      <!-- End of Modal/popup for Login -->
+    <!-- END OF MODALS -->
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

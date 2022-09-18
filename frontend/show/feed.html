@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>feed page</title>
+  <script src="https://kit.fontawesome.com/f95bd4b1c8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+
+<body>
+  <div class="feed-contents">
+    <div id="feed-content" class="feed-content">
+      <div class="home-heading">
+        <span>Home</span>
+      </div>
+      <!-- Create a new tweet section -->
+      <div class="create-tweet">
+        <img id="profile-tweet" class="pp" src="../assets/dummy-profile-pic.png" />
+        <div class="whatshappening">
+          <input id="newtweet-text" type="text" placeholder="What's happening?" />
+          <div class="btn-imgicon">
+            <div class="img-icon-container">
+              <!-- !added new here -->
+              <label for="newtweet-imgurl">
+              <img src="../assets/image_icon.png" />
+            </label>
+
+              <input type="file" id="newtweet-imgurl" accept="image/*" />
+            </div>
+            <button class="btn-lg home-tweet-btn" id="newtweet-submit">
+              Tweet
+            </button>
+          </div>
+          <img class="display-none" style="width: 250px; height: 250px" id="newtweet-imgshow" class="new-tweet-img"
+            src="../assets/dummy-profile-pic.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END feed content -->
+
+  <script src="../js/feed.js"></script>
+</body>
+
+</html>
