@@ -15,7 +15,7 @@
     <div class="feed-content">
       <!-- Profile heading with left arrow -->
       <div class="home-heading">
-        <div class="btn-imgicon arrow-left"><img src="/assets/left-arrow.png"></div>
+        <div id="left-arrow" class="btn-imgicon arrow-left"><img src="../assets/left-arrow.png"></div>
         <span>Profile</span>
       </div>
       <!-- Banner div -->
@@ -27,12 +27,12 @@
       </div>
       <!-- Left button (Edit profile) -->
       <div class="edit-prof-btn">
-        <button>Edit profile</button>
+        <button id="edit-p">Edit profile</button>
       </div>
       <!-- Name and username -->
       <div class="name-username-banner">
         <a>
-          <p class="name">Name</p>
+          <p id="name-on-page" class="name">Name</p>
         </a>
         <a>
           <p class="username">@username</p>
@@ -40,7 +40,7 @@
       </div>
       <!-- Bio -->
       <div class="bio-banner">
-        <p>Bio is here ... ... ... ... ... .. ... ... ... ... ...</p>
+        <p id="bio-on-page">Bio is here ... ... ... ... ... .. ... ... ... ... ...</p>
       </div>
       <!-- Joined date -->
       <div class="joined-date-banner">
@@ -136,6 +136,45 @@
     </div>
   </div>
   <!-- END feed content -->
+
+
+  <!-- !START Edit Profile Modal -->>
+  <div class="modal-bg" id="modal-bg">
+  <div class="modal-profile" >
+
+      <div class="model-title">
+        <div class="edit-pp-x">
+          <span id="close-edit-profile">X</span>
+          <p>Edit Profile</p>
+        </div>
+        <div class="save-btn">
+          <button id="save-changes">Save</button>
+        </div>
+      </div>
+      <!-- Modify banner -->
+      <div class="banner-container center-items">
+        <div class="upload-cam-div">
+          <a><i class="fa-solid fa-camera"></i></a>
+        </div>
+      </div>
+      <!-- Modify pp -->
+      <div class="profile-pic-modal center-items pic-shrink">
+        <div class="upload-cam-div">
+          <a><i class="fa-solid fa-camera"></i></a>
+        </div>
+      </div>
+      <!-- Modify Name -->
+      <div class="modal-inputs">
+        <label for="name">Name</label>
+        <input value="" id='edited-name' type="text" name="name">
+        <!-- Modify Bio -->
+        <label  for="bio">Bio</label>
+        <input value="" id="edited-bio" type="text" name="bio">
+      </div>
+    </div>
+  </div>
+  <!-- !END Edit Profile Modal -->
+  <script src="/frontend/js/editProfile.js"></script>
 </body>
 
 </html>
